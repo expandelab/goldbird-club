@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidad y Seguridad - Gold Bird / ExpandeLAB</title>
+    <style>
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            line-height: 1.6; 
+            color: #2d3748; 
+            max-width: 850px; 
+            margin: 0 auto; 
+            padding: 30px 20px; 
+            background-color: #f7fafc;
+        }
+        .container {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        h1 { 
+            color: #1a202c; 
+            border-bottom: 2px solid #e2e8f0; 
+            padding-bottom: 12px; 
+            font-size: 1.8rem;
+        }
+        h2 { 
+            color: #2b6cb0; 
+            margin-top: 28px; 
+            font-size: 1.3rem;
+            border-bottom: 1px solid #edf2f7;
+            padding-bottom: 6px;
+        }
+        h3 {
+            color: #2d3748;
+            font-size: 1.05rem;
+            margin-top: 18px;
+            margin-bottom: 6px;
+        }
+        p, li { 
+            font-size: 0.98rem; 
+            color: #4a5568; 
+        }
+        ul { 
+            padding-left: 20px; 
+        }
+        li { 
+            margin-bottom: 8px; 
+        }
+        strong { 
+            color: #1a202c; 
+        }
+        .meta-info {
+            background-color: #ebf8ff;
+            border-left: 4px solid #3182ce;
+            padding: 12px 16px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        .meta-info p {
+            margin: 0;
+            color: #2b6cb0;
+        }
+        .footer { 
+            margin-top: 40px; 
+            font-size: 0.88em; 
+            color: #718096; 
+            border-top: 1px solid #e2e8f0; 
+            padding-top: 20px; 
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Política de Privacidad, Seguridad y Protección de Datos</h1>
+    
+    <div class="meta-info">
+        <p><strong>Última actualización:</strong> Agosto de 2026</p>
+        <p><strong>Operado por:</strong> ExpandeLAB para el ecosistema Gold Bird Loyalty System.</p>
+    </div>
+
+    <p>En <strong>ExpandeLAB</strong> y <strong>Gold Bird Loyalty System</strong> (en adelante, "la Plataforma"), la seguridad de la información, la privacidad de los usuarios y la transparencia en el tratamiento de datos son prioridades fundamentales. Esta Política describe las medidas técnicas, organizativas y operativas que implementamos para proteger los datos de los <strong>Clientes</strong> y <strong>Comercios</strong> que acceden a nuestros servicios a través de nuestro portal web e interfaces digitales.</p>
+
+    <h2>1. Descripción del Servicio y Arquitectura del Ecosistema</h2>
+    <p><strong>Gold Bird</strong> es un ecosistema digital multi-comercio de fidelización y gamificación. El servicio permite a los usuarios gestionar en una sola cuenta sus tarjetas de fidelidad de múltiples comercios afiliados (ej. cafeterías, barberías, spas).</p>
+    <ul>
+        <li><strong>Acumulación de Sellos y Plumas (Gamificación):</strong> Cada sello obtenido en el punto de venta de un comercio equivale a 1 <em>Pluma</em>. Mientras los sellos se administran por cada comercio individualmente, las <em>Plumas</em> se acumulan de forma global en la cuenta del usuario para determinar su nivel en la plataforma:
+            <ul>
+                <li><strong>Bronce:</strong> De 0 a 9 plumas por comercio históricas acumuladas.</li>
+                <li><strong>Plata:</strong> De 10 a 29 plumas por comercio históricas acumuladas (10% OFF en Gifting).</li>
+                <li><strong>Oro:</strong> 30 o más plumas por comercio  históricas acumuladas (20% OFF en Gifting).</li>
+            </ul>
+        </li>
+        <li><strong>Gifting Economy (Regalo de Experiencias):</strong> Módulo que permite adquirir vales o experiencias digitales para regalar a terceros. El nivel del usuario aplica un descuento automático en tiempo real al comprar estas experiencias.</li>
+        <li><strong>Descubrimiento "Cerca de mí":</strong> Servicio de directorio que utiliza geolocalización o filtros de categoría para sugerir comercios afiliados cercanos al usuario.</li>
+    </ul>
+
+    <h2>2. Datos Objeto de Tratamiento y Recopilación</h2>
+    <p>Para brindar la funcionalidad completa del sistema de fidelización y la arquitectura del ecosistema, recopilamos y procesamos los siguientes datos:</p>
+    <ul>
+        <li><strong>Identificación, Contacto y Rol:</strong> Correo electrónico, número de teléfono móvil, nombre completo y rol dentro de la plataforma (<code>admin</code>, <code>merchant</code>, <code>client</code>).</li>
+        <li><strong>Autenticación:</strong> Contraseñas encriptadas, credenciales de acceso y PINes de seguridad.</li>
+        <li><strong>Fidelidad y Gamificación:</strong> Historial global de plumas, sellos acumulados por tarjeta, rachas de actividad continua (<code>racha_dias</code>) y asignación de nivel (Bronce/Plata/Oro).</li>
+        <li><strong>Transacciones y Visitas:</strong> Registros inmutables de interacciones en caja (<code>stamp_add</code> y <code>reward_redeem</code>), incluyendo fecha, hora exacta e intervalos de visita.</li>
+        <li><strong>Mecanismos de Validación y Regalos (Gifting):</strong> Lecturas QR, códigos dinámicos de 6 dígitos para validación en caja, y datos de regalo (nombre/contacto del destinatario y código alfanumérico <code>coupon_code</code>).</li>
+        <li><strong>Ubicación:</strong> Datos aproximados de localización para la función de descubrimiento "Cerca de mí".</li>
+    </ul>
+
+    <h2>3. Medidas de Seguridad Implementadas</h2>
+    <p>Para garantizar la confidencialidad, integridad y disponibilidad de la información, aplicamos estándares internacionales de seguridad digital:</p>
+    
+    <h3>Cifrado en Tránsito y en Reposo</h3>
+    <p>Toda la comunicación entre tu navegador o dispositivo y nuestros servidores está cifrada mediante <strong>Protocolos SSL/TLS (HTTPS)</strong> de alta resistencia. Las credenciales (contraseñas y PINes) se almacenan utilizando algoritmos de hashing criptográfico unidireccional con <em>salt</em> (como bcrypt o Argon2). Nunca almacenamos contraseñas en texto plano.</p>
+
+    <h3>Validación Dinámica e Identidad en Caja</h3>
+    <p>La validación y canje de beneficios se efectúa mediante dos mecanismos seguros: escaneo de código QR dinámico desde la pantalla del cliente con confirmación explícita previa al estampado, o búsqueda autorizada por el usuario en el punto de venta. Los cupones de regalo utilizan códigos únicos de 6 caracteres alfanuméricos en mayúsculas de estado irreversible.</p>
+
+    <h3>Control de Acceso Segmentado y Aislamiento por Comercio</h3>
+    <p>Separación estricta de roles y permisos entre perfiles. Cada comercio afiliado (<code>merchant</code>) únicamente puede acceder y operar sobre la tarjeta correspondiente a su propio negocio (<code>business_id</code>). Ningún comercio tiene acceso al historial ni a las tarjetas que el cliente mantenga en otros establecimientos.</p>
+
+    <h3>Monitoreo y Prevención</h3>
+    <p>Implementación de cortafuegos de aplicaciones web (WAF) y monitoreo en tiempo real contra ataques por fuerza bruta en el formulario de inicio de sesión (<em>rate limiting</em>).</p>
+
+    <h2>4. Analítica y Métricas de Comportamiento (ClientActivity)</h2>
+    <p>La plataforma procesa métricas agregadas de recurrencia e indicadores de fidelidad (clasificados en Alta, Media, Baja o Nueva según el intervalo promedio entre visitas) para permitir a los comercios optimizar la atención. Los datos analíticos se integran de forma estructurada con herramientas de Business Intelligence (ej. Looker Studio) garantizando la anonimización de datos no relevantes.</p>
+
+    <h2>5. Responsabilidad del Usuario</h2>
+    <p>La seguridad es un esfuerzo conjunto. Para proteger tu cuenta, te recomendamos:</p>
+    <ul>
+        <li>Mantener la confidencialidad de tu contraseña, PIN de acceso y códigos dinámicos.</li>
+        <li>No compartir ni capturar pantallas de tus códigos QR de canje con terceros no autorizados.</li>
+        <li>Cerrar la sesión activa al finalizar la interacción en dispositivos compartidos o públicos.</li>
+        <li>Notificar de inmediato a la administración de Gold Bird / ExpandeLAB ante cualquier actividad sospechosa o acceso no autorizado a tu cuenta.</li>
+    </ul>
+
+    <h2>6. Transferencia y Compartición de Datos</h2>
+    <ul>
+        <li><strong>Entre Cliente y Comercio:</strong> Al realizar una validación o canje mediante código QR o de 6 dígitos, la Plataforma únicamente transmite al comercio la información estrictamente necesaria para validar la tarjeta digital del local y aplicar la recompensa.</li>
+        <li><strong>Regalos a Terceros:</strong> Al enviar una experiencia de regalo, solo se comparte con el destinatario la información de la experiencia y el código de canje generado.</li>
+        <li><strong>No Comercialización a Terceros:</strong> No vendemos, alquilamos ni comercializamos datos personales con terceros para fines publicitarios independientes. Únicamente compartimos información cuando sea requerido por mandato judicial o regulatorio competente.</li>
+    </ul>
+
+    <h2>7. Derechos del Titular de los Datos (ARCO) y Contacto</h2>
+    <p>Como usuario, tienes derecho a <strong>Acceder, Rectificar, Cancelar u Oponerste (Derechos ARCO)</strong> al tratamiento de tus datos personales, así como a solicitar la cancelación de tu cuenta. Puedes ejercer estos derechos enviando una solicitud a nuestro canal oficial:</p>
+    <ul>
+        <li><strong>Correo Electrónico:</strong> <code>soporte@expandelab.app</code></li>
+        <li><strong>Asunto:</strong> Solicitud de Derechos de Datos Personales - Gold Bird</li>
+    </ul>
+
+    <div class="footer">
+        <p>&copy; 2026 ExpandeLAB / Gold Bird Loyalty System. Todos los derechos reservados.</p>
+        <p>Contacto de soporte: soporte@expandelab.app | Sitio Web: www.expandelab.app</p>
+    </div>
+</div>
+
+</body>
+</html>
