@@ -1,840 +1,652 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Gold Bird — Fidelización premium</title>
-<meta name="description" content="Tarjeta de sellos digital para tu negocio. Tus clientes vuelven por sus plumas — y desbloquean experiencias reales.">
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Gold Bird Club</title>
+<meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Instrument+Sans:wght@400;500;600&display=swap">
 <style>
-  :root{
-    --bg:#07080A;
-    --bg-alt:#0B0D11;
-    --surface:#14171F;
-    --surface-2:#1A1E28;
-    --stub:#101319;
-    --border:rgba(201,162,39,0.3);
-    --border-soft:rgba(242,239,230,0.08);
-    --gold:#C9A227;
-    --gold-light:#E8C874;
-    --gold-pale:#F4E7C4;
-    --text:#F2EFE6;
-    --text-dim:#9C9A90;
-    --text-faint:#6B6A63;
-    --bronze:#B08D57;
-    --silver:#C7CAD1;
-    --oro:#E8C874;
-    --danger:#D96C5F;
-    --radius-lg:20px;
-    --radius-md:12px;
+/* Layout: pastilla de navegación flotante, hero con tarjeta 3D, cinta infinita de experiencias, demo interactiva en teléfono. */
+:root {
+  --bg: #F6F5F2;
+  --surface: #FFFFFF;
+  --surface-2: #EFEDE7;
+  --ink: #17181C;
+  --muted: #5B5D66;
+  --line: rgba(23, 24, 28, .12);
+  --gold: #E8B63A;
+  --gold-text: #8A6208;
+  --on-gold: #1B1406;
+  --card: #14151A;
+  --card-ink: #F4F1E8;
+  --bronze: #B8743A;
+  --silver: #9AA1AB;
+  --shadow: 0 30px 60px -30px rgba(20, 21, 26, .35);
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0E0F12; --surface: #17181D; --surface-2: #1E2026; --ink: #F3F1EA; --muted: #A4A6AF;
+    --line: rgba(255, 255, 255, .12); --gold-text: #E8B63A; --card: #1B1C22;
+    --shadow: 0 30px 60px -30px rgba(0, 0, 0, .7);
+    color-scheme: dark;
   }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
-  body{background:var(--bg); color:var(--text); font-family:'Inter',sans-serif; -webkit-font-smoothing:antialiased; overflow-x:hidden;}
-  a{color:inherit; text-decoration:none;}
-  .container{max-width:1040px; margin:0 auto; padding:0 1.5rem;}
-  section{padding:5rem 0;}
-  @media(prefers-reduced-motion: reduce){ *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;} }
+}
+:root[data-theme="dark"] {
+  --bg: #0E0F12; --surface: #17181D; --surface-2: #1E2026; --ink: #F3F1EA; --muted: #A4A6AF;
+  --line: rgba(255, 255, 255, .12); --gold-text: #E8B63A; --card: #1B1C22;
+  --shadow: 0 30px 60px -30px rgba(0, 0, 0, .7);
+  color-scheme: dark;
+}
 
-  /* ---------- GLASS UTILITY ---------- */
-  .glass{
-    background:linear-gradient(160deg, rgba(242,239,230,0.055), rgba(242,239,230,0.015));
-    border:1px solid rgba(201,162,39,0.16);
-    backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
-    box-shadow:inset 0 1px 0 rgba(255,255,255,0.04), 0 24px 48px -28px rgba(0,0,0,0.65);
-  }
-  .glass-solid{ background:var(--surface); border:1px solid var(--border-soft); box-shadow:0 20px 44px -26px rgba(0,0,0,0.5); }
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 17px; line-height: 1.55;
+  -webkit-font-smoothing: antialiased; overflow-x: hidden;
+}
+h1, h2, h3 { font-family: var(--font-display); font-weight: 400; line-height: 1.05; margin: 0; text-wrap: balance; letter-spacing: -.015em; }
+h1 em, h2 em { font-style: italic; color: var(--gold-text); }
+p { margin: 0; }
+a { color: inherit; }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 6px; }
+.wrap { width: 100%; max-width: 1160px; margin-inline: auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+.section { padding-block: clamp(72px, 10vw, 132px); }
+.kicker { font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-text); font-weight: 600; }
+.lead { color: var(--muted); font-size: 1.1rem; max-width: 52ch; }
+.sec-head { display: grid; gap: 16px; margin-bottom: clamp(36px, 5vw, 64px); }
+.sec-head h2 { font-size: clamp(2.2rem, 5.2vw, 4rem); max-width: 16ch; }
 
-  /* ---------- REVEAL ON SCROLL ---------- */
-  .reveal{opacity:0; transform:translateY(22px); transition:opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1);}
-  .reveal.left{transform:translateX(-26px);}
-  .reveal.right{transform:translateX(26px);}
-  .reveal.in-view{opacity:1; transform:none;}
+/* Botones */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 24px; border-radius: 999px; border: 1px solid transparent; font-weight: 600; text-decoration: none; transition: transform .25s, box-shadow .25s, background .25s; white-space: nowrap; }
+.btn-gold { background: var(--gold); color: var(--on-gold); box-shadow: 0 10px 30px -12px rgba(232, 182, 58, .8); }
+.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 18px 36px -14px rgba(232, 182, 58, .9); }
+.btn-ghost { border-color: var(--line); background: transparent; }
+.btn-ghost:hover { background: var(--surface-2); }
+.btn-sm { padding: 10px 18px; font-size: .92rem; }
 
-  /* ---------- NAV ---------- */
-  nav{position:sticky; top:0; z-index:50; background:rgba(7,8,10,0.72); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid var(--border-soft);}
-  .navrow{display:flex; align-items:center; justify-content:space-between; padding:1rem 1.5rem; max-width:1040px; margin:0 auto;}
-  .logo{display:flex; align-items:center; gap:9px;}
-  .logo span{font-family:'Fraunces',serif; font-weight:500; font-size:18px; color:var(--gold-light); letter-spacing:0.3px;}
-  .navlinks{display:flex; gap:1.75rem; font-size:13.5px; color:var(--text-dim);}
-  .navlinks a:hover{color:var(--gold-light);}
-  .navcta{display:flex; gap:10px;}
-  @media(max-width:720px){ .navlinks{display:none;} }
+/* Navegación flotante */
+.nav-wrap { position: fixed; z-index: 50; left: 0; right: 0; top: calc(14px + env(safe-area-inset-top, 0px)); display: flex; justify-content: center; padding-inline: max(12px, env(safe-area-inset-left, 0px)) max(12px, env(safe-area-inset-right, 0px)); pointer-events: none; }
+.nav { pointer-events: auto; display: flex; align-items: center; gap: 28px; padding: 8px 8px 8px 20px; border-radius: 999px; background: color-mix(in srgb, var(--surface) 78%, transparent); backdrop-filter: blur(18px) saturate(1.4); -webkit-backdrop-filter: blur(18px) saturate(1.4); border: 1px solid var(--line); box-shadow: 0 12px 40px -20px rgba(0, 0, 0, .35); transition: padding .3s, gap .3s; max-width: 100%; }
+.nav.is-scrolled { gap: 20px; }
+.logo { display: inline-flex; align-items: center; gap: 9px; text-decoration: none; font-weight: 600; letter-spacing: -.01em; }
+.logo-mark { width: 28px; height: 28px; border-radius: 50%; background: var(--gold); color: var(--on-gold); display: grid; place-items: center; font-family: var(--font-display); font-style: italic; font-size: 1.05rem; line-height: 1; padding-bottom: 3px; }
+.nav-links { display: flex; gap: 22px; font-size: .92rem; color: var(--muted); }
+.nav-links a { text-decoration: none; transition: color .2s; }
+.nav-links a:hover { color: var(--ink); }
+@media (max-width: 760px) { .nav-links { display: none; } .nav { gap: 16px; } }
 
-  /* ---------- BUTTONS ---------- */
-  .btn{border:none; border-radius:var(--radius-md); padding:12px 22px; font-size:13.5px; font-weight:600; cursor:pointer; font-family:'Inter',sans-serif; letter-spacing:0.2px; transition:transform .25s cubic-bezier(.34,1.56,.64,1), background .2s, box-shadow .2s; display:inline-block; will-change:transform;}
-  .btn-gold{background:var(--gold); color:#1A1400; box-shadow:0 4px 18px rgba(201,162,39,0.3);}
-  .btn-gold:hover{background:var(--gold-light);}
-  .btn-outline{background:transparent; border:1px solid var(--border); color:var(--gold-light);}
-  .btn-outline:hover{background:rgba(201,162,39,0.08);}
-  .btn:disabled{opacity:0.35; cursor:not-allowed; transform:none !important;}
-  .btn-full{width:100%;}
+/* Hero */
+.hero { padding-top: clamp(120px, 16vw, 170px); padding-bottom: clamp(56px, 8vw, 96px); position: relative; overflow: hidden; }
+.hero::before { content: ""; position: absolute; width: 720px; height: 720px; right: -160px; top: -120px; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--gold) 38%, transparent), transparent 66%); filter: blur(10px); transform: translate3d(var(--px, 0px), var(--py, 0px), 0); transition: transform .4s ease-out; pointer-events: none; }
+.hero-grid { position: relative; display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
+.hero h1 { font-size: clamp(3rem, 8vw, 6.4rem); margin-block: 18px 24px; }
+.hero .lead { margin-bottom: 34px; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-note { margin-top: 28px; display: flex; align-items: center; gap: 12px; color: var(--muted); font-size: .92rem; }
+.avatars { display: flex; }
+.avatars span { width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--bg); margin-left: -8px; display: grid; place-items: center; font-size: .72rem; font-weight: 600; color: var(--on-gold); }
+.avatars span:first-child { margin-left: 0; }
+.hero-load > * { animation: rise .9s cubic-bezier(.2, .7, .2, 1) both; }
+.hero-load > *:nth-child(2) { animation-delay: .08s; } .hero-load > *:nth-child(3) { animation-delay: .16s; } .hero-load > *:nth-child(4) { animation-delay: .24s; } .hero-load > *:nth-child(5) { animation-delay: .32s; }
+@keyframes rise { from { transform: translateY(18px); opacity: .001; } to { transform: none; opacity: 1; } }
+@media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
 
-  /* ---------- HERO + SHADER BACKGROUND ---------- */
-  .hero{position:relative; padding-top:0; padding-bottom:0; min-height:92vh; display:flex; align-items:center; overflow:hidden;}
-  .hero-aura{position:absolute; inset:0; z-index:0;}
-  #auraCanvas{position:absolute; inset:0; width:100%; height:100%; display:block;}
-  .hero-fade{position:absolute; left:0; right:0; bottom:0; height:40%; background:linear-gradient(to bottom, transparent, var(--bg)); z-index:1;}
-  .hero-inner{position:relative; z-index:2; width:100%; text-align:center; display:flex; flex-direction:column; align-items:center; padding:7rem 1.5rem 3rem;}
+.stage { perspective: 1200px; display: grid; place-items: center; padding: 24px 0 40px; }
+.tilt { position: relative; width: min(100%, 420px); transform-style: preserve-3d; transform: rotateX(var(--rx, 6deg)) rotateY(var(--ry, -10deg)); transition: transform .25s ease-out; }
+.gcard { position: relative; aspect-ratio: 1.58; border-radius: 26px; padding: 22px 24px; color: var(--card-ink); background: linear-gradient(135deg, #2A2B33 0%, #14151A 55%, #1E1F26 100%); box-shadow: var(--shadow), inset 0 0 0 1px rgba(255, 255, 255, .08); overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; }
+.gcard::after { content: ""; position: absolute; inset: 0; background: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, .13) 48%, transparent 62%); transform: translateX(var(--shine, -60%)); transition: transform .5s ease-out; pointer-events: none; }
+.gcard-top { display: flex; justify-content: space-between; align-items: center; font-size: .86rem; }
+.gcard-top .logo-mark { width: 24px; height: 24px; font-size: .9rem; }
+.tier-pill { padding: 4px 11px; border-radius: 999px; font-size: .7rem; letter-spacing: .12em; font-weight: 600; text-transform: uppercase; background: color-mix(in srgb, var(--bronze) 30%, transparent); color: #F0C9A0; border: 1px solid color-mix(in srgb, var(--bronze) 60%, transparent); }
+.gcard-name { font-family: var(--font-display); font-size: 1.5rem; line-height: 1.1; }
+.gcard-sub { font-size: .8rem; opacity: .65; }
+.stamps { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
+.stamp { aspect-ratio: 1; border-radius: 50%; border: 1.5px dashed rgba(255, 255, 255, .28); display: grid; place-items: center; font-size: .95rem; color: var(--on-gold); transition: background .4s, border-color .4s, transform .4s; }
+.stamp.on { background: var(--gold); border: 1.5px solid var(--gold); }
+.stamp.pop { animation: pop .6s cubic-bezier(.3, 1.6, .5, 1); }
+@keyframes pop { 0% { transform: scale(.3); } 100% { transform: scale(1); } }
+.gcard-foot { display: flex; justify-content: space-between; font-size: .8rem; opacity: .8; }
+.float { position: absolute; padding: 12px 16px; border-radius: 16px; background: var(--surface); color: var(--ink); border: 1px solid var(--line); box-shadow: var(--shadow); font-size: .86rem; line-height: 1.3; transform: translateZ(70px); animation: bob 6s ease-in-out infinite; }
+.float strong { display: block; font-size: .92rem; }
+.float span { color: var(--muted); font-size: .8rem; }
+.float.f1 { left: -28px; bottom: -26px; }
+.float.f2 { right: -20px; top: -22px; animation-delay: -3s; display: flex; gap: 10px; align-items: center; }
+.float .dot { width: 30px; height: 30px; border-radius: 50%; background: var(--gold); color: var(--on-gold); display: grid; place-items: center; }
+@keyframes bob { 0%, 100% { translate: 0 0; } 50% { translate: 0 -8px; } }
+@media (max-width: 520px) { .float.f1 { left: -6px; } .float.f2 { right: -6px; } }
 
-  .badge{
-    display:inline-flex; align-items:center; gap:7px; font-size:12px; color:var(--gold-light);
-    padding:6px 14px; border-radius:999px; margin-bottom:1.75rem;
-  }
-  .badge .dot{width:6px; height:6px; border-radius:50%; background:var(--gold-light); animation:pulse 2s infinite;}
-  @keyframes pulse{ 0%{opacity:.4;} 50%{opacity:1;} 100%{opacity:.4;} }
+/* Cinta */
+.ticker { border-block: 1px solid var(--line); overflow: hidden; background: var(--surface); }
+.ticker-track { display: flex; width: max-content; animation: slide 32s linear infinite; }
+.ticker-track span { font-family: var(--font-display); font-size: clamp(1.4rem, 3vw, 2.1rem); padding: 20px 26px; white-space: nowrap; }
+.ticker-track b { color: var(--gold); font-weight: 400; }
+@keyframes slide { to { transform: translateX(-50%); } }
 
-  h1.hero-h{font-family:'Fraunces',serif; font-weight:500; font-size:58px; line-height:1.08; letter-spacing:-1px; max-width:780px;}
-  h1.hero-h em{font-style:italic; color:var(--gold-light);}
-  .hero-sub{font-size:17px; color:var(--text-dim); margin-top:1.3rem; max-width:460px; line-height:1.6;}
-  .hero-ctas{display:flex; gap:12px; margin-top:2.1rem; flex-wrap:wrap; justify-content:center;}
-  .herolink{display:inline-block; margin-top:1.3rem; font-size:12.5px; color:var(--text-dim); border-bottom:1px dotted var(--border-soft); padding-bottom:1px; transition:color .2s;}
-  .herolink:hover{color:var(--gold-light);}
+/* Cómo funciona */
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; counter-reset: step; position: relative; }
+.step { background: var(--surface); border: 1px solid var(--line); border-radius: 28px; padding: 30px; display: grid; gap: 16px; align-content: start; transition: transform .35s, border-color .35s; }
+.step:hover { transform: translateY(-6px); border-color: color-mix(in srgb, var(--gold) 60%, var(--line)); }
+.step-n { font-family: var(--font-display); font-style: italic; font-size: 3.4rem; color: var(--gold-text); line-height: 1; }
+.step h3 { font-size: 1.6rem; }
+.step p { color: var(--muted); }
+.step-art { height: 120px; border-radius: 18px; background: var(--surface-2); display: grid; place-items: center; position: relative; overflow: hidden; }
+.mini-stamps { display: flex; gap: 8px; }
+.mini-stamps i { width: 26px; height: 26px; border-radius: 50%; border: 1.5px dashed var(--muted); }
+.mini-stamps i.on { background: var(--gold); border: 1.5px solid var(--gold); }
+.scan { width: 74px; height: 74px; border-radius: 14px; border: 2px solid var(--ink); position: relative; display: grid; place-items: center; font-size: 1.6rem; }
+.scan::after { content: ""; position: absolute; left: 6px; right: 6px; height: 2px; background: var(--gold); box-shadow: 0 0 12px var(--gold); animation: scan 2.4s ease-in-out infinite; }
+@keyframes scan { 0%, 100% { top: 8px; } 50% { top: 62px; } }
+.doors { display: flex; gap: 8px; align-items: flex-end; }
+.doors i { width: 34px; border-radius: 17px 17px 4px 4px; background: var(--surface); border: 1.5px solid var(--muted); transition: height .5s; }
+.doors i:nth-child(1) { height: 44px; } .doors i:nth-child(2) { height: 62px; } .doors i:nth-child(3) { height: 82px; background: var(--gold); border-color: var(--gold); }
+.step:hover .doors i:nth-child(1) { height: 58px; } .step:hover .doors i:nth-child(2) { height: 78px; }
+@media (max-width: 860px) { .steps { grid-template-columns: 1fr; } }
 
-  .hero-visual{margin-top:3.75rem; position:relative; display:flex; justify-content:center; gap:0;}
-  .mock{width:222px; padding:1.1rem; border-radius:22px;}
-  .mock.b{margin-left:-40px; margin-top:56px; transform:rotate(4deg);}
-  .mock.a{transform:rotate(-3deg); z-index:2;}
-  .mock-eyebrow{font-size:9px; letter-spacing:1px; text-transform:uppercase; color:var(--text-faint);}
-  .mock-name{font-family:'Fraunces',serif; font-size:15px; margin-top:3px;}
-  .mock-stamps{display:flex; gap:4px; margin-top:12px; flex-wrap:wrap;}
-  .mock-stamp{width:18px; height:18px; border-radius:50%; border:1px solid var(--border-soft);}
-  .mock-stamp.on{background:var(--gold); border-color:var(--gold);}
-  .mock-qr{width:100%; aspect-ratio:1; background:#000; border-radius:8px; margin-top:14px; padding:8px;}
-  .mock-qr svg{width:100%; height:100%;}
-  @media(max-width:600px){ h1.hero-h{font-size:36px;} .mock{width:170px;} .hero{min-height:auto;} .hero-inner{padding-top:5.5rem;} }
+/* Experiencias: cinta infinita */
+.xp { background: var(--surface-2); overflow: hidden; }
+.xp .sec-head { grid-template-columns: 1fr auto; align-items: end; }
+.xp .sec-head .lead { max-width: 40ch; }
+@media (max-width: 760px) { .xp .sec-head { grid-template-columns: 1fr; } }
+.tiers { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
+.tier-chip { padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); font-size: .9rem; display: inline-flex; gap: 8px; align-items: center; }
+.tier-chip i { width: 10px; height: 10px; border-radius: 50%; }
+.marquee { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.marquee-track { display: flex; width: max-content; animation: slide 60s linear infinite; }
+.marquee:hover .marquee-track, .marquee:focus-within .marquee-track { animation-play-state: paused; }
+.marquee-group { display: flex; gap: 20px; padding-right: 20px; }
+.xcard { width: 300px; flex: none; border-radius: 26px; background: var(--surface); border: 1px solid var(--line); overflow: hidden; transition: transform .4s, box-shadow .4s; }
+.xcard:hover { transform: translateY(-8px) rotate(-.6deg); box-shadow: var(--shadow); }
+.xart { height: 190px; position: relative; display: grid; place-items: center; font-size: 4.4rem; color: rgba(255, 255, 255, .92); overflow: hidden; }
+.xart::before { content: ""; position: absolute; width: 220px; height: 220px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .25); }
+.xart::after { content: ""; position: absolute; width: 130px; height: 130px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .3); }
+.xart span { position: relative; z-index: 1; }
+.a-viaje { background: linear-gradient(140deg, #3B4A63, #1D2433); }
+.a-gastro { background: linear-gradient(140deg, #7A3A4A, #3A1B27); }
+.a-escapada { background: linear-gradient(140deg, #2F6B6B, #153636); }
+.a-hospedaje { background: linear-gradient(140deg, #B07F22, #5A3E0E); }
+.xbody { padding: 20px 22px 24px; display: grid; gap: 6px; }
+.xmeta { display: flex; justify-content: space-between; font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.xmeta b { font-weight: 600; }
+.xmeta .t-bronce { color: var(--bronze); } .xmeta .t-plata { color: var(--silver); } .xmeta .t-oro { color: var(--gold-text); }
+.xbody h3 { font-size: 1.45rem; }
+.xbody .loc { color: var(--muted); font-size: .9rem; }
+.xbody .desc { margin-top: 6px; font-size: .95rem; }
+.xp-cta { margin-top: 36px; }
 
-  .taglist{display:flex; flex-wrap:wrap; gap:8px 22px; justify-content:center; margin-top:3rem; font-size:12px; color:var(--text-dim);}
-  .taglist span::before{content:"·"; margin-right:22px; color:var(--gold); font-weight:bold;}
-  .taglist span:first-child::before{display:none;}
+/* Dos lados */
+.split { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(28px, 5vw, 72px); align-items: start; }
+.tabs { display: inline-flex; padding: 5px; border-radius: 999px; background: var(--surface-2); border: 1px solid var(--line); margin-top: 28px; }
+.tab { border: 0; background: transparent; padding: 10px 22px; border-radius: 999px; font-weight: 600; font-size: .95rem; color: var(--muted); transition: background .25s, color .25s; }
+.tab[aria-selected="true"] { background: var(--ink); color: var(--bg); }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 32px; padding: clamp(26px, 4vw, 44px); display: grid; gap: 20px; box-shadow: var(--shadow); }
+.panel h3 { font-size: clamp(1.9rem, 3.4vw, 2.6rem); }
+.panel .lead { font-size: 1.02rem; }
+.ticks { list-style: none; padding: 0; margin: 4px 0 0; display: grid; gap: 12px; }
+.ticks li { display: flex; gap: 12px; align-items: flex-start; }
+.ticks li::before { content: "✳"; color: var(--gold-text); flex: none; margin-top: 1px; }
+@media (max-width: 860px) { .split { grid-template-columns: 1fr; } }
 
-  /* ---------- SECTION HEADERS ---------- */
-  .eyebrow-lbl{font-size:11.5px; letter-spacing:1.2px; text-transform:uppercase; color:var(--gold-light); font-weight:600;}
-  h2.sect-h{font-family:'Fraunces',serif; font-weight:500; font-size:30px; margin-top:6px; max-width:460px; line-height:1.2;}
-  .sect-sub{font-size:14.5px; color:var(--text-dim); margin-top:10px; max-width:440px; line-height:1.55;}
+/* Demo */
+.demo { background: var(--card); color: var(--card-ink); position: relative; overflow: hidden; }
+.demo .sec-head h2 em { color: var(--gold); }
+.demo .kicker { color: var(--gold); } .demo .lead { color: rgba(244, 241, 232, .7); }
+.demo-grid { display: grid; grid-template-columns: 1fr auto; gap: clamp(32px, 7vw, 100px); align-items: center; }
+.demo-side { display: grid; gap: 24px; }
+.seg { display: inline-flex; padding: 5px; border-radius: 999px; background: rgba(255, 255, 255, .08); width: max-content; max-width: 100%; }
+.seg button { border: 0; background: transparent; padding: 10px 22px; border-radius: 999px; font-weight: 600; font-size: .95rem; color: rgba(244, 241, 232, .7); }
+.seg button[aria-selected="true"] { background: var(--gold); color: var(--on-gold); }
+.demo-hint { padding: 16px 20px; border-radius: 18px; background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .1); max-width: 46ch; font-size: .98rem; }
+.phone { width: 300px; max-width: 100%; margin-inline: auto; border-radius: 42px; padding: 11px; background: #0A0A0C; border: 1px solid rgba(255, 255, 255, .16); box-shadow: 0 40px 80px -30px rgba(0, 0, 0, .8), 0 0 80px -30px rgba(232, 182, 58, .45); }
+.screen { height: 560px; border-radius: 32px; background: #F6F5F2; color: #17181C; overflow: hidden; position: relative; display: flex; flex-direction: column; }
+.status { display: flex; justify-content: space-between; padding: 14px 24px 6px; font-size: .78rem; font-weight: 600; }
+.app-head { display: flex; justify-content: space-between; align-items: center; padding: 6px 20px 0; font-size: .78rem; letter-spacing: .08em; color: #5B5D66; }
+.view { flex: 1; padding: 14px 20px 20px; display: none; flex-direction: column; gap: 14px; }
+.view.on { display: flex; animation: rise .5s both; }
+.view h4 { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: 2rem; line-height: 1; letter-spacing: -.02em; }
+.mini-card { border-radius: 20px; padding: 14px; background: #14151A; color: #F4F1E8; display: grid; gap: 12px; }
+.mini-card .stamps { gap: 6px; }
+.mini-card .stamp { font-size: .7rem; }
+.mini-row { display: flex; justify-content: space-between; font-size: .78rem; opacity: .85; }
+.bar { height: 6px; border-radius: 6px; background: rgba(255, 255, 255, .14); overflow: hidden; }
+.bar i { display: block; height: 100%; background: var(--gold); width: 0; transition: width .7s cubic-bezier(.2, .8, .2, 1); }
+.next { border-radius: 16px; background: #EDEBE4; padding: 12px 14px; display: grid; gap: 2px; font-size: .8rem; color: #5B5D66; }
+.next strong { font-size: 1rem; color: #17181C; }
+.qr-box { margin-top: auto; border-radius: 18px; border: 1px solid rgba(23, 24, 28, .14); background: #fff; padding: 12px; display: flex; gap: 14px; align-items: center; }
+.qr { width: 76px; height: 76px; display: grid; grid-template-columns: repeat(15, 1fr); gap: 0; flex: none; }
+.qr i { background: transparent; } .qr i.k { background: #17181C; }
+.qr-box small { color: #5B5D66; line-height: 1.3; display: block; } .qr-box strong { font-size: .95rem; }
+.reward { display: none; border-radius: 16px; background: var(--gold); color: var(--on-gold); padding: 12px 14px; font-weight: 600; font-size: .9rem; }
+.reward.on { display: block; animation: pop .6s cubic-bezier(.3, 1.6, .5, 1); }
+.scanner { flex: 1; border-radius: 22px; background: #14151A; position: relative; display: grid; place-items: center; overflow: hidden; }
+.scanner .frame { width: 150px; height: 150px; border-radius: 20px; border: 2px solid rgba(255, 255, 255, .5); position: relative; display: grid; place-items: center; color: rgba(255, 255, 255, .5); font-size: 2.6rem; }
+.scanner .frame::after { content: ""; position: absolute; left: 8px; right: 8px; height: 2px; background: var(--gold); box-shadow: 0 0 14px var(--gold); animation: scan2 2.4s ease-in-out infinite; }
+@keyframes scan2 { 0%, 100% { top: 10px; } 50% { top: 136px; } }
+.scanner.hit { animation: flash .5s; }
+@keyframes flash { 30% { box-shadow: inset 0 0 0 4px var(--gold); } }
+.scan-btn { border: 0; border-radius: 999px; padding: 15px; background: #17181C; color: #fff; font-weight: 600; }
+.scan-btn:hover { background: #2B2D35; }
+.visits { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: .82rem; color: #5B5D66; }
+.visits li { display: flex; justify-content: space-between; padding: 8px 12px; border-radius: 12px; background: #EDEBE4; }
+.reset { border: 0; background: transparent; color: rgba(244, 241, 232, .7); text-decoration: underline; text-underline-offset: 4px; padding: 0; width: max-content; }
+.confetti { position: fixed; inset: 0; pointer-events: none; z-index: 60; overflow: hidden; }
+.confetti i { position: absolute; width: 9px; height: 14px; border-radius: 2px; animation: fall 1.6s cubic-bezier(.2, .6, .4, 1) forwards; }
+@keyframes fall { to { transform: translate(var(--dx), 110vh) rotate(var(--rot)); opacity: .2; } }
+@media (max-width: 860px) { .demo-grid { grid-template-columns: 1fr; } }
 
-  /* ---------- COMO FUNCIONA ---------- */
-  .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:1.75rem; margin-top:2.5rem;}
-  .step-num{font-family:'Fraunces',serif; font-size:26px; color:var(--gold); font-style:italic;}
-  .step h3{font-size:15.5px; font-weight:600; margin-top:10px;}
-  .step p{font-size:13px; color:var(--text-dim); margin-top:5px; line-height:1.5;}
-  @media(max-width:720px){ .steps{grid-template-columns:1fr;} }
+/* CTA y pie */
+.cta { text-align: center; position: relative; overflow: hidden; }
+.cta::before { content: ""; position: absolute; left: 50%; top: 50%; width: 900px; height: 900px; max-width: 160vw; translate: -50% -50%; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--gold) 26%, transparent), transparent 62%); pointer-events: none; }
+.cta .wrap { position: relative; display: grid; gap: 24px; justify-items: center; }
+.cta h2 { font-size: clamp(2.6rem, 7vw, 5.4rem); max-width: 14ch; }
+.cta .lead { margin-inline: auto; }
+.assure { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.assure span { padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); font-size: .9rem; color: var(--muted); }
+.mail { display: inline-flex; align-items: center; gap: 10px; color: var(--muted); font-size: .95rem; flex-wrap: wrap; justify-content: center; }
+.mail code { font-family: var(--font-body); color: var(--ink); font-weight: 600; user-select: all; }
+.mail button { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 6px 14px; font-size: .85rem; }
+footer { border-top: 1px solid var(--line); padding-block: 32px; color: var(--muted); font-size: .9rem; }
+footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: center; }
+footer nav { display: flex; gap: 20px; }
+footer nav a { text-decoration: none; } footer nav a:hover { color: var(--ink); }
 
-  /* ---------- SPLIT ---------- */
-  .split{display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:2.5rem;}
-  .splitcard{border-radius:var(--radius-lg); padding:1.75rem; display:flex; flex-direction:column; transition:transform .35s cubic-bezier(.16,1,.3,1), border-color .35s;}
-  .splitcard:hover{transform:translateY(-4px); border-color:rgba(201,162,39,0.32);}
-  .splitcard h3{font-family:'Fraunces',serif; font-size:19px; font-weight:500;}
-  .splitcard ul{margin-top:1rem; display:flex; flex-direction:column; gap:9px; flex-grow:1;}
-  .splitcard li{font-size:13.5px; color:var(--text-dim); padding-left:18px; position:relative; line-height:1.45;}
-  .splitcard li::before{content:""; position:absolute; left:0; top:6px; width:6px; height:6px; border-radius:50%; background:var(--gold);}
-  .splitcard .btn{margin-top:1.4rem;}
-  @media(max-width:720px){ .split{grid-template-columns:1fr;} }
-
-  /* ---------- FEATURES ---------- */
-  .feats{display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-top:2.5rem;}
-  .feat{padding:1.6rem 1.4rem; border-radius:var(--radius-lg); transition:transform .35s cubic-bezier(.16,1,.3,1);}
-  .feat:hover{transform:translateY(-4px);}
-  .feat .ic{width:28px; height:28px; margin-bottom:14px;}
-  .feat h3{font-size:14px; font-weight:600;}
-  .feat p{font-size:12.5px; color:var(--text-dim); margin-top:6px; line-height:1.5;}
-  @media(max-width:820px){ .feats{grid-template-columns:repeat(2,1fr);} }
-  @media(max-width:480px){ .feats{grid-template-columns:1fr;} }
-
-  /* ---------- CONCIERGE NETWORK (marketing) ---------- */
-  #concierge{background:var(--bg-alt); border-top:1px solid var(--border-soft); border-bottom:1px solid var(--border-soft);}
-  .xp-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1.1rem; margin-top:2.5rem;}
-  .xp-card{
-    border-radius:var(--radius-lg); padding:1.3rem 1.2rem 1.2rem; display:flex; flex-direction:column; position:relative; overflow:hidden;
-    transition:transform .35s cubic-bezier(.16,1,.3,1);
-  }
-  .xp-card:hover{transform:translateY(-4px);}
-  .xp-card::before{content:''; position:absolute; top:0; left:0; width:100%; height:2px; background:linear-gradient(90deg,var(--gold),transparent);}
-  .xp-cat{font-size:10px; letter-spacing:0.8px; text-transform:uppercase; color:var(--gold-light); font-weight:600; display:flex; align-items:center; gap:6px;}
-  .xp-title{font-family:'Fraunces',serif; font-size:16.5px; font-weight:500; margin-top:8px; line-height:1.25;}
-  .xp-loc{font-size:12px; color:var(--text-faint); margin-top:3px;}
-  .xp-perk{font-size:12.5px; color:var(--text-dim); margin-top:10px; line-height:1.45; flex-grow:1;}
-  .xp-req{margin-top:14px; padding-top:12px; border-top:1px dashed var(--border-soft); display:flex; align-items:center; justify-content:space-between; font-size:11px;}
-  .xp-req-label{color:var(--text-faint);}
-  .xp-req-tier{font-weight:600; padding:2px 9px; border-radius:999px;}
-  .xp-partner{margin-top:2.5rem; display:flex; align-items:center; justify-content:space-between; gap:1.5rem; border-radius:var(--radius-lg); padding:1.5rem 1.75rem; flex-wrap:wrap;}
-  .xp-partner p{font-size:13px; color:var(--text-dim); max-width:420px; line-height:1.55;}
-  .xp-partner h4{font-family:'Fraunces',serif; font-size:17px; font-weight:500; margin-bottom:6px;}
-  @media(max-width:920px){ .xp-grid{grid-template-columns:repeat(2,1fr);} }
-  @media(max-width:480px){ .xp-grid{grid-template-columns:1fr;} }
-
-  /* ---------- TRUST STRIP ---------- */
-  .trust{border-top:1px solid var(--border-soft); border-bottom:1px solid var(--border-soft); background:var(--bg-alt);}
-  .trustrow{display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; padding:2.5rem 0;}
-  .trustitem h4{font-size:13.5px; font-weight:600; color:var(--gold-pale);}
-  .trustitem p{font-size:12px; color:var(--text-faint); margin-top:4px;}
-  @media(max-width:900px){ .trustrow{grid-template-columns:repeat(2,1fr);} }
-
-  /* ---------- DEMO SECTION ---------- */
-  #demo{background:var(--bg-alt); border-top:1px solid var(--border-soft);}
-  .demohead{text-align:center; margin-bottom:2.5rem;}
-  .demohead h2{margin-left:auto; margin-right:auto;}
-  .demohead .sect-sub{margin-left:auto; margin-right:auto;}
-  .roletabs{display:flex; background:var(--surface); border:1px solid var(--border-soft); border-radius:999px; padding:4px; width:max-content; margin:1.5rem auto 0;}
-  .roletab{border:none; background:transparent; color:var(--text-dim); font-family:'Inter',sans-serif; font-size:13px; font-weight:600; padding:9px 20px; border-radius:999px; cursor:pointer; transition:all .2s;}
-  .roletab.active{background:var(--gold); color:#1A1400; box-shadow:0 2px 8px rgba(201,162,39,0.25);}
-
-  .pass{display:flex; background:var(--stub); border-radius:var(--radius-lg); overflow:hidden; border:1px solid var(--border); position:relative; box-shadow:0 10px 30px rgba(0,0,0,0.45);}
-  .pass-main{flex:1; padding:1.6rem 1.6rem 1.4rem; min-width:0;}
-  .pass-stub{width:176px; flex-shrink:0; padding:1.5rem 1rem; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; background:var(--surface);}
-  .perf{width:0; position:relative; flex-shrink:0; border-left:1.5px dashed rgba(242,239,230,0.18);}
-  .perf::before,.perf::after{content:''; position:absolute; left:-9px; width:18px; height:18px; border-radius:50%; background:var(--bg-alt);}
-  .perf::before{top:-9px;} .perf::after{bottom:-9px;}
-
-  .eyebrow{font-size:10.5px; letter-spacing:1.2px; text-transform:uppercase; color:var(--text-faint); font-weight:500;}
-  .clientname{font-family:'Fraunces',serif; font-size:22px; font-weight:500; margin-top:4px; color:var(--text);}
-  .tierrow{display:flex; align-items:center; gap:8px; margin-top:8px;}
-  .tierbadge{font-size:11px; font-weight:600; letter-spacing:0.4px; padding:3px 10px; border-radius:999px;}
-  .tier-Bronce{background:rgba(176,141,87,0.2); color:var(--bronze);}
-  .tier-Plata{background:rgba(199,202,209,0.2); color:var(--silver);}
-  .tier-Oro{background:rgba(232,200,116,0.2); color:var(--oro);}
-  .plumas{font-size:12px; color:var(--text-dim);}
-  .plumas b{color:var(--gold-light); font-weight:600;}
-  .stamprow{display:flex; gap:6px; margin-top:1.15rem; flex-wrap:wrap;}
-  .stamp{width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:1.5px solid var(--border-soft); transition:transform .35s cubic-bezier(.34,1.56,.64,1), background .3s, border-color .3s;}
-  .stamp.filled{background:var(--gold); border-color:var(--gold); box-shadow:0 0 8px rgba(201,162,39,0.35);}
-  .stamp.pop{transform:scale(1.25);}
-  .stamp svg{width:16px; height:16px;}
-  .progresstext{margin-top:10px; font-size:12.5px; color:var(--text-dim);}
-  .rewardbanner{margin-top:1rem; background:rgba(232,200,116,0.1); border:1px solid var(--gold); border-radius:var(--radius-md); padding:0.85rem 1rem; font-size:13px; color:var(--gold-pale); display:flex; align-items:center; gap:8px;}
-  .qrbox{width:118px; height:118px; background:#000; border-radius:8px; padding:8px;}
-  .qrbox svg{width:100%; height:100%;}
-  .codetext{font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:1px; color:var(--gold-light); text-align:center;}
-  .codelabel{font-size:10px; color:var(--text-faint); text-align:center; letter-spacing:0.3px;}
-
-  .card{background:var(--surface); border:1px solid var(--border-soft); border-radius:var(--radius-lg); padding:1.75rem; box-shadow:0 10px 30px rgba(0,0,0,0.25);}
-  .card h2{font-family:'Fraunces',serif; font-weight:500; font-size:19px; margin-bottom:6px;}
-  .card .sub{font-size:13px; color:var(--text-dim); margin-bottom:1.25rem;}
-  label{display:block; font-size:12px; color:var(--text-dim); margin-bottom:5px; margin-top:14px;}
-  label:first-of-type{margin-top:0;}
-  input[type=text],input[type=email]{width:100%; background:var(--surface-2); border:1px solid var(--border-soft); color:var(--text); border-radius:var(--radius-md); padding:11px 13px; font-size:14px; font-family:'Inter',sans-serif; outline:none; transition:border-color .2s;}
-  input:focus{border-color:var(--gold);}
-
-  .activity{margin-top:1.5rem;}
-  .activity h3{font-size:12px; letter-spacing:0.6px; text-transform:uppercase; color:var(--text-faint); margin-bottom:10px; font-weight:600;}
-  .arow{display:flex; align-items:center; justify-content:space-between; padding:9px 0; border-bottom:1px solid var(--border-soft); font-size:13px;}
-  .arow:last-child{border-bottom:none;}
-  .arow .who{color:var(--text);}
-  .arow .when{color:var(--text-faint); font-size:11.5px;}
-  .arow .tag{font-size:11px; padding:2px 8px; border-radius:999px; font-weight:600;}
-  .tag-stamp{background:rgba(201,162,39,0.14); color:var(--gold-light);}
-  .tag-redeem{background:rgba(217,108,95,0.14); color:var(--danger);}
-  .empty{font-size:13px; color:var(--text-faint); padding:1rem 0; text-align:center;}
-
-  .scanrow{display:flex; gap:8px; margin-bottom:0.7rem;}
-  .scanrow input{flex:1;}
-  select{width:100%; background:var(--surface-2); border:1px solid var(--border-soft); color:var(--text); border-radius:var(--radius-md); padding:11px 13px; font-size:14px; font-family:'Inter',sans-serif; outline:none; cursor:pointer;}
-  .foundcard{margin-top:1.25rem; background:var(--surface-2); border:1px solid var(--border-soft); border-radius:var(--radius-md); padding:1.1rem 1.25rem;}
-  .foundtop{display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;}
-  .foundname{font-family:'Fraunces',serif; font-size:17px; font-weight:500;}
-  .foundmeta{font-size:12px; color:var(--text-dim); margin-top:2px;}
-  .actionrow{display:flex; gap:10px; margin-top:14px;}
-  .actionrow .btn{flex:1;}
-  table{width:100%; border-collapse:collapse; margin-top:0.5rem;}
-  th{text-align:left; font-size:11px; color:var(--text-faint); text-transform:uppercase; letter-spacing:0.4px; padding:8px 6px; border-bottom:1px solid var(--border-soft); font-weight:500;}
-  td{padding:10px 6px; font-size:13px; border-bottom:1px solid var(--border-soft);}
-  td.num{font-family:'JetBrains Mono',monospace; font-size:12.5px; color:var(--gold-light);}
-  .sectiontitle{font-family:'Fraunces',serif; font-size:16px; font-weight:500; margin:2.25rem 0 0.9rem;}
-  .hint{font-size:12px; color:var(--text-faint); margin-top:8px; line-height:1.5;}
-  .toast{position:fixed; bottom:24px; left:50%; transform:translateX(-50%) translateY(12px); opacity:0; background:var(--gold); color:#1A1400; padding:10px 22px; border-radius:999px; font-size:13px; font-weight:600; transition:all .3s cubic-bezier(.34,1.56,.64,1); pointer-events:none; z-index:999; white-space:nowrap; box-shadow:0 4px 15px rgba(0,0,0,0.35);}
-  .toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
-  @media(max-width:480px){ .pass{flex-direction:column;} .pass-stub{width:100%; flex-direction:row; padding:1rem 1.5rem;} .perf{display:none;} .qrbox{width:88px; height:88px;} }
-
-  /* ---------- CONCIERGE (inside demo, client pass) ---------- */
-  .cx-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:0.85rem; margin-top:0.9rem;}
-  .cx-card{background:var(--surface-2); border:1px solid var(--border-soft); border-radius:var(--radius-md); padding:0.95rem 1rem; position:relative;}
-  .cx-card.locked{opacity:0.5;}
-  .cx-cat{font-size:9px; letter-spacing:0.6px; text-transform:uppercase; color:var(--text-faint); font-weight:600;}
-  .cx-title{font-family:'Fraunces',serif; font-size:13.5px; margin-top:4px; line-height:1.3;}
-  .cx-req{font-size:10.5px; color:var(--gold-light); margin-top:8px;}
-  .cx-req.islocked{color:var(--text-faint);}
-  .cx-lock{position:absolute; top:10px; right:10px; width:13px; height:13px;}
-  .cx-lock path{stroke:var(--text-faint); fill:none; stroke-width:1.4;}
-  @media(max-width:600px){ .cx-grid{grid-template-columns:1fr 1fr;} }
-  .partner-cta{margin-top:1.5rem; background:var(--surface-2); border:1px dashed var(--border); border-radius:var(--radius-md); padding:1.1rem 1.25rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap;}
-  .partner-cta p{font-size:12.5px; color:var(--text-dim); max-width:380px; line-height:1.5;}
-  .partner-cta .btn{flex-shrink:0;}
-
-  /* ---------- FOOTER ---------- */
-  footer{padding:3rem 0 2.5rem; text-align:center;}
-  footer .logo{justify-content:center; margin-bottom:8px;}
-  footer p{font-size:12px; color:var(--text-faint);}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+  .ticker-track, .marquee-track { animation: none !important; }
+  .marquee { overflow-x: auto; }
+}
 </style>
-</head>
-<body>
 
-<nav>
-  <div class="navrow">
-    <div class="logo">
-      <svg width="26" height="26" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="16.5" stroke="#C9A227" stroke-width="1"/><path d="M17 8c3 3 3 7 3 9-2 0-6 0-9-3 1-4 4-6 6-6z" fill="#E8C874"/><path d="M17 26c-3-3-3-7-3-9 2 0 6 0 9 3-1 4-4 6-6 6z" fill="#C9A227"/></svg>
-      <span>Gold Bird</span>
+<div class="nav-wrap">
+  <nav class="nav" id="nav" aria-label="Principal">
+    <a class="logo" href="#inicio"><span class="logo-mark" aria-hidden="true">g</span>gold bird</a>
+    <div class="nav-links">
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#experiencias">Experiencias</a>
+      <a href="#demo">La tarjeta</a>
     </div>
-    <div class="navlinks">
-      <a href="#funciona">Cómo funciona</a>
-      <a href="#segmentos">Cliente y comercio</a>
-      <a href="#concierge">Experiencias</a>
-      <a href="#features">Funciones</a>
-    </div>
-    <div class="navcta"><a href="#demo" class="btn btn-gold magnetic" onclick="setRole('merchant')">Probar gratis</a></div>
-  </div>
-</nav>
-
-<section class="hero">
-  <div class="hero-aura"><canvas id="auraCanvas"></canvas></div>
-  <div class="hero-fade"></div>
-  <div class="hero-inner">
-    <span class="badge glass"><span class="dot"></span>Lima, Perú · Gold Bird Club</span>
-    <h1 class="hero-h">Que vuelvan <em>por sus plumas.</em></h1>
-    <p class="hero-sub">Sellos digitales que premian cada visita. Sin apps. Sin complicarte.</p>
-
-    <div class="hero-ctas">
-      <a href="#demo" class="btn btn-gold magnetic" onclick="setRole('merchant')">Probar como comercio</a>
-      <a href="#demo" class="btn btn-outline magnetic" onclick="setRole('client')">Ver como cliente</a>
-    </div>
-    <a href="#concierge" class="herolink">Descubre las experiencias ↓</a>
-
-    <div class="hero-visual">
-      <div class="mock glass b">
-        <div class="mock-eyebrow">Sellos</div>
-        <div class="mock-name">Camila Ruiz</div>
-        <div class="mock-stamps">
-          <div class="mock-stamp on"></div><div class="mock-stamp on"></div><div class="mock-stamp on"></div>
-          <div class="mock-stamp on"></div><div class="mock-stamp on"></div><div class="mock-stamp on"></div>
-          <div class="mock-stamp"></div><div class="mock-stamp"></div><div class="mock-stamp"></div><div class="mock-stamp"></div>
-        </div>
-      </div>
-      <div class="mock glass a">
-        <div class="mock-eyebrow">Tarjeta digital</div>
-        <div class="mock-name">David M.</div>
-        <div class="mock-qr" id="hero-qr"></div>
-      </div>
-    </div>
-
-    <div class="taglist">
-      <span>Sin apps</span><span>QR seguro</span><span>Niveles y premios</span><span>Experiencias reales</span>
-    </div>
-  </div>
-</section>
-
-<section id="funciona">
-  <div class="container">
-    <div class="eyebrow-lbl reveal">Cómo funciona</div>
-    <h2 class="sect-h reveal">Listo en minutos.</h2>
-    <div class="steps">
-      <div class="step reveal"><div class="step-num">01</div><h3>Crea tu tarjeta</h3><p>Elige cuántos sellos y qué premio dar. Sin programar nada.</p></div>
-      <div class="step reveal"><div class="step-num">02</div><h3>Tu cliente muestra su QR</h3><p>Lo escaneas desde tu celular. No instala nada.</p></div>
-      <div class="step reveal"><div class="step-num">03</div><h3>Los sellos abren puertas</h3><p>Acercan el premio local — y desbloquean experiencias de la red.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="segmentos">
-  <div class="container">
-    <div class="eyebrow-lbl reveal">Dos lados, una tarjeta</div>
-    <h2 class="sect-h reveal">Hecho para quien fideliza y para quien vuelve.</h2>
-    <div class="split">
-      <div class="splitcard glass reveal left">
-        <h3>Para clientes</h3>
-        <ul>
-          <li>Tarjeta digital, tipo boarding pass</li>
-          <li>Sellos que suman al instante</li>
-          <li>Niveles: Bronce, Plata, Oro</li>
-          <li>Experiencias premium al subir de nivel</li>
-        </ul>
-        <a href="#demo" class="btn btn-gold magnetic" onclick="setRole('client')">Ver tarjeta de cliente</a>
-      </div>
-      <div class="splitcard glass reveal right">
-        <h3>Para comercios</h3>
-        <ul>
-          <li>Escanea desde cualquier celular</li>
-          <li>Suma sellos o entrega el premio en un toque</li>
-          <li>Ve quién vuelve, en tiempo real</li>
-          <li>Suma ingresos como aliado de experiencias</li>
-        </ul>
-        <a href="#demo" class="btn btn-gold magnetic" onclick="setRole('merchant')">Ver panel de comercio</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="features">
-  <div class="container">
-    <div class="eyebrow-lbl reveal">Funciones</div>
-    <h2 class="sect-h reveal">Lo esencial, sin vueltas.</h2>
-    <div class="feats">
-      <div class="feat glass reveal">
-        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#C9A227" stroke-width="1.4"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM18 18h3v3h-3z"/></svg>
-        <h3>Código único</h3><p>Cada cliente tiene su QR. Sin apps que instalar.</p>
-      </div>
-      <div class="feat glass reveal">
-        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#C9A227" stroke-width="1.4"><circle cx="6" cy="12" r="2.3"/><circle cx="12" cy="12" r="2.3"/><circle cx="18" cy="12" r="2.3"/></svg>
-        <h3>Sellos y niveles</h3><p>Cada visita suma. Los niveles motivan la siguiente.</p>
-      </div>
-      <div class="feat glass reveal">
-        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#C9A227" stroke-width="1.4"><path d="M4 19V9M12 19V4M20 19v-6"/></svg>
-        <h3>En vivo</h3><p>Ves quién vuelve y cuánto lleva acumulado.</p>
-      </div>
-      <div class="feat glass reveal">
-        <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#C9A227" stroke-width="1.4"><path d="M12 3l2.4 6.5L21 12l-6.6 2.5L12 21l-2.4-6.5L3 12l6.6-2.5z"/></svg>
-        <h3>Premio automático</h3><p>Se activa solo al completar la tarjeta.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="concierge">
-  <div class="container">
-    <div class="eyebrow-lbl reveal">La alianza</div>
-    <h2 class="sect-h reveal">Las plumas valen más que un premio local.</h2>
-    <p class="sect-sub reveal">Suma sellos y desbloquea experiencias con negocios aliados — la razón real por la que un cliente elige volver.</p>
-
-    <div class="xp-grid">
-      <div class="xp-card glass reveal">
-        <div class="xp-cat">✈ Viaje</div>
-        <div class="xp-title">Sala VIP Jorge Chávez</div>
-        <div class="xp-loc">Lima, Perú</div>
-        <div class="xp-perk">Acceso ilimitado antes de cualquier vuelo.</div>
-        <div class="xp-req"><span class="xp-req-label">Nivel</span><span class="xp-req-tier tier-Bronce">Bronce</span></div>
-      </div>
-      <div class="xp-card glass reveal">
-        <div class="xp-cat">🍽 Gastronomía</div>
-        <div class="xp-title">Cena en viñedo boutique</div>
-        <div class="xp-loc">Ica, Perú</div>
-        <div class="xp-perk">Mesa reservada + cata privada.</div>
-        <div class="xp-req"><span class="xp-req-label">Nivel</span><span class="xp-req-tier tier-Plata">Plata</span></div>
-      </div>
-      <div class="xp-card glass reveal">
-        <div class="xp-cat">⛰ Retiro</div>
-        <div class="xp-title">Workation Retreat</div>
-        <div class="xp-loc">Punta Sal, Perú</div>
-        <div class="xp-perk">3 noches + coworking frente al mar.</div>
-        <div class="xp-req"><span class="xp-req-label">Nivel</span><span class="xp-req-tier tier-Plata">Plata</span></div>
-      </div>
-      <div class="xp-card glass reveal">
-        <div class="xp-cat">✦ Hospedaje</div>
-        <div class="xp-title">Casa Cielo, Hotel Boutique</div>
-        <div class="xp-loc">Cusco, Perú</div>
-        <div class="xp-perk">20% de descuento y acceso prioritario.</div>
-        <div class="xp-req"><span class="xp-req-label">Nivel</span><span class="xp-req-tier tier-Oro">Oro</span></div>
-      </div>
-    </div>
-
-    <div class="xp-partner glass reveal">
-      <div>
-        <h4>¿Tienes un negocio premium?</h4>
-        <p>Súmate como aliado. Aparece ante los clientes más fieles de la red y gana por cada reserva.</p>
-      </div>
-      <a href="#demo" class="btn btn-outline magnetic" onclick="setRole('merchant')">Quiero ser aliado</a>
-    </div>
-  </div>
-</section>
-
-<div class="trust">
-  <div class="container">
-    <div class="trustrow">
-      <div class="trustitem reveal"><h4>Hecho en Lima</h4><p>Para negocios peruanos.</p></div>
-      <div class="trustitem reveal"><h4>Sin apps</h4><p>Funciona como una web.</p></div>
-      <div class="trustitem reveal"><h4>Tiempo real</h4><p>Mismo estado para ambos.</p></div>
-      <div class="trustitem reveal"><h4>Red curada</h4><p>Aliados verificados.</p></div>
-    </div>
-  </div>
+    <a class="btn btn-gold btn-sm" href="#comercios">Soy un negocio</a>
+  </nav>
 </div>
 
-<section id="demo">
-  <div class="container">
-    <div class="demohead">
-      <div class="eyebrow-lbl reveal" style="text-align:center;">Pruébalo tú mismo</div>
-      <h2 class="sect-h reveal">Así se ve Gold Bird.</h2>
-      <p class="sect-sub reveal">Cambia de vista y mira cómo funciona. Ya dejamos clientes de ejemplo cargados.</p>
-      <div class="roletabs">
-        <button class="roletab" id="tab-merchant" onclick="setRole('merchant')">Comercio</button>
-        <button class="roletab" id="tab-client" onclick="setRole('client')">Cliente</button>
+<main id="inicio">
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-load">
+        <span class="kicker">Fidelización premium · Lima, Perú</span>
+        <h1>Que vuelvan por sus <em>plumas.</em></h1>
+        <p class="lead">Cada visita suma. Cada sello abre una puerta. La fidelización que convierte clientes en fans y negocios locales en experiencias inolvidables.</p>
+        <div class="cta-row">
+          <a class="btn btn-gold" href="#comercios">Descubre Gold Bird</a>
+          <a class="btn btn-ghost" href="#como-funciona">Así funciona</a>
+        </div>
+        <div class="hero-note">
+          <div class="avatars" aria-hidden="true">
+            <span style="background:#E8B63A">C</span><span style="background:#D9A06A">M</span><span style="background:#C7C2B4">R</span><span style="background:#E8B63A">+</span>
+          </div>
+          <span>Una red que crece para quienes eligen volver.</span>
+        </div>
+      </div>
+
+      <div class="stage" id="stage">
+        <div class="tilt" id="tilt">
+          <div class="float f2"><div class="dot" aria-hidden="true">✳</div><div><strong>Tu QR, tu llave</strong><span>Sin apps. Solo abre y muestra.</span></div></div>
+          <div class="gcard" id="heroCard">
+            <div class="gcard-top"><span class="logo"><span class="logo-mark" aria-hidden="true">g</span>gold bird</span><span class="tier-pill">Bronce</span></div>
+            <div>
+              <div class="gcard-sub">Tu tarjeta de visitas</div>
+              <div class="gcard-name">Camila Ruiz</div>
+              <div class="gcard-sub">Miembro desde 2024</div>
+            </div>
+            <div class="stamps" id="heroStamps"></div>
+            <div class="gcard-foot"><span>4 de 6 sellos</span><span>Te faltan 2 visitas</span></div>
+          </div>
+          <div class="float f1"><strong>Un pequeño gusto, muy pronto.</strong><span>Cada visita cuenta</span></div>
+        </div>
       </div>
     </div>
-    <div id="app" style="max-width:680px; margin:0 auto;"></div>
+  </header>
+
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track" id="ticker"></div>
   </div>
-</section>
+
+  <section class="section" id="como-funciona">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Simple como volver</span>
+        <h2>La próxima visita empieza <em>hoy.</em></h2>
+      </div>
+      <div class="steps">
+        <article class="step">
+          <div class="step-art"><div class="mini-stamps"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
+          <span class="step-n">1</span>
+          <h3>Crea tu tarjeta</h3>
+          <p>Elige cuántos sellos y qué premio ofrecer. Está lista en minutos, sin programar nada.</p>
+        </article>
+        <article class="step">
+          <div class="step-art"><div class="scan" aria-hidden="true">▦</div></div>
+          <span class="step-n">2</span>
+          <h3>Escanea su QR</h3>
+          <p>Tu cliente muestra su código desde el celular. Tú lo escaneas. Sin apps para nadie.</p>
+        </article>
+        <article class="step">
+          <div class="step-art"><div class="doors" aria-hidden="true"><i></i><i></i><i></i></div></div>
+          <span class="step-n">3</span>
+          <h3>Abre nuevas puertas</h3>
+          <p>Los sellos activan premios locales y experiencias exclusivas en toda la red.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section xp" id="experiencias">
+    <div class="wrap">
+      <div class="sec-head">
+        <div style="display:grid;gap:16px">
+          <span class="kicker">Más que un premio</span>
+          <h2>Las plumas valen más que <em>un sello.</em></h2>
+        </div>
+        <p class="lead">Al subir de nivel, tus clientes descubren experiencias que no encontrarían por su cuenta. Esa es la magia de una red.</p>
+      </div>
+      <div class="tiers" aria-label="Niveles">
+        <span class="tier-chip"><i style="background:var(--bronze)"></i>Bronce</span>
+        <span class="tier-chip"><i style="background:var(--silver)"></i>Plata</span>
+        <span class="tier-chip"><i style="background:var(--gold)"></i>Oro</span>
+      </div>
+    </div>
+    <div class="marquee" id="marquee" tabindex="0" aria-label="Experiencias de la red Gold Bird">
+      <div class="marquee-track" id="xTrack"></div>
+    </div>
+    <div class="wrap xp-cta"><a class="btn btn-ghost" href="#comercios">Conoce la red de experiencias</a></div>
+  </section>
+
+  <section class="section" id="lados">
+    <div class="wrap split">
+      <div>
+        <span class="kicker">Un club, dos lados</span>
+        <h2 style="font-size:clamp(2.2rem,5vw,3.8rem);margin-top:16px">Hecho para quien fideliza y <em>quien vuelve.</em></h2>
+        <p class="lead" style="margin-top:18px">Una experiencia mejor para tus clientes. Una relación más valiosa para tu negocio.</p>
+        <div class="tabs" role="tablist" aria-label="Elige tu lado">
+          <button class="tab" role="tab" id="t-cli" aria-selected="true" aria-controls="p-cli">Para clientes</button>
+          <button class="tab" role="tab" id="t-com" aria-selected="false" aria-controls="p-com" tabindex="-1">Para comercios</button>
+        </div>
+      </div>
+      <div>
+        <div class="panel" role="tabpanel" id="p-cli" aria-labelledby="t-cli">
+          <span class="kicker">Para clientes</span>
+          <h3>Vuelve por lo que te espera.</h3>
+          <p class="lead">Una tarjeta digital que guarda tus visitas y te acerca a premios locales y experiencias memorables.</p>
+          <ul class="ticks">
+            <li>Tu tarjeta siempre en tu celular</li>
+            <li>Sellos que suman al instante</li>
+            <li>Niveles Bronce, Plata y Oro</li>
+            <li>Experiencias que se desbloquean</li>
+          </ul>
+        </div>
+        <div class="panel" role="tabpanel" id="p-com" aria-labelledby="t-com" hidden>
+          <span class="kicker">Para comercios</span>
+          <h3>Convierte visitas en una relación.</h3>
+          <p class="lead">Crea tu tarjeta de sellos, escanea el QR de tus clientes y suma tu negocio a una red de experiencias locales.</p>
+          <ul class="ticks">
+            <li>Tarjeta propia, lista en minutos y sin programar</li>
+            <li>Escaneo de QR desde tu celular, sin apps para nadie</li>
+            <li>Premios locales que traen clientes nuevos a tu puerta</li>
+            <li>Hecho para negocios peruanos</li>
+          </ul>
+          <a class="btn btn-gold" href="#comercios" style="width:max-content">Quiero sumar mi negocio</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section demo" id="demo">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Un vistazo al club</span>
+        <h2>Tu próxima visita <em>cuenta.</em></h2>
+        <p class="lead">Cambia de vista y descubre cómo se siente Gold Bird desde ambos lados. Ya dejamos una tarjeta de muestra lista.</p>
+      </div>
+      <div class="demo-grid">
+        <div class="demo-side">
+          <div class="seg" role="tablist" aria-label="Vista de la demo">
+            <button role="tab" id="d-cli" aria-selected="true">Soy cliente</button>
+            <button role="tab" id="d-com" aria-selected="false" tabindex="-1">Soy comercio</button>
+          </div>
+          <p class="demo-hint" id="hint">Esta es la tarjeta de Camila. Pasa a «Soy comercio» y escanea su QR para sumarle una visita.</p>
+          <button class="reset" id="reset" type="button">Reiniciar tarjeta de muestra</button>
+        </div>
+
+        <div class="phone" aria-label="Vista previa interactiva">
+          <div class="screen">
+            <div class="status"><span>9:41</span><span aria-hidden="true">•••</span></div>
+            <div class="app-head"><span class="logo" style="color:#17181C"><span class="logo-mark" aria-hidden="true">g</span>gold bird</span><span id="appHeadRight">HOLA, CAMILA ✳</span></div>
+
+            <div class="view on" id="v-cli">
+              <span class="kicker" style="color:#8A6208"><span id="tierName">Gold Bird Club · Bronce</span></span>
+              <h4 id="clientTitle">Una visita<br>más cerca.</h4>
+              <div class="mini-card">
+                <div class="stamps" id="demoStamps"></div>
+                <div class="bar"><i id="bar"></i></div>
+                <div class="mini-row"><span id="count">4 de 6 visitas</span><span id="left">Te faltan 2</span></div>
+              </div>
+              <div class="reward" id="reward">¡Premio listo! Pídelo en tu próxima visita.</div>
+              <div class="next"><span>Próximo premio</span><strong>Un café de la casa</strong></div>
+              <div class="qr-box"><div class="qr" id="qr" aria-hidden="true"></div><div><small>Tu código personal</small><strong>Muéstralo al visitar</strong></div></div>
+            </div>
+
+            <div class="view" id="v-com">
+              <h4>Escanea<br>y suma.</h4>
+              <div class="scanner" id="scanner"><div class="frame" aria-hidden="true">▦</div></div>
+              <button class="scan-btn" id="scanBtn" type="button">Escanear QR de Camila</button>
+              <ul class="visits" id="visits"></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta" id="comercios">
+    <div class="wrap">
+      <span class="kicker">Hecho en Lima, para quienes vuelven</span>
+      <h2>Tu negocio merece ser <em>inolvidable.</em></h2>
+      <p class="lead">Súmate a una red de experiencias locales y convierte cada visita en el comienzo de otra.</p>
+      <a class="btn btn-gold" href="mailto:hola@goldbird.club?subject=Quiero%20sumar%20mi%20negocio">Quiero sumar mi negocio</a>
+      <div class="mail"><span>Escríbenos a</span><code id="mailText">hola@goldbird.club</code><button type="button" id="copyMail">Copiar</button></div>
+      <div class="assure"><span>Sin apps</span><span>Listo en minutos</span><span>Hecho para negocios peruanos</span></div>
+    </div>
+  </section>
+</main>
 
 <footer>
-  <div class="logo">
-    <svg width="22" height="22" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="16.5" stroke="#C9A227" stroke-width="1"/><path d="M17 8c3 3 3 7 3 9-2 0-6 0-9-3 1-4 4-6 6-6z" fill="#E8C874"/><path d="M17 26c-3-3-3-7-3-9 2 0 6 0 9 3-1 4-4 6-6 6z" fill="#C9A227"/></svg>
-    <span style="font-family:'Fraunces',serif; color:var(--gold-light); font-size:15px;">Gold Bird</span>
+  <div class="wrap">
+    <a class="logo" href="#inicio"><span class="logo-mark" aria-hidden="true">g</span>gold bird club</a>
+    <span>© 2025 Gold Bird Club · Lima, Perú</span>
+    <nav><a href="#como-funciona">Cómo funciona</a><a href="mailto:hola@goldbird.club">Contáctanos</a></nav>
   </div>
-  <p>Gold Bird Club · Lima, Perú</p>
 </footer>
 
-<div class="toast" id="toast"></div>
-
 <script>
-/* ============ HERO SHADER-STYLE BACKGROUND ============ */
-(function(){
-  const canvas = document.getElementById('auraCanvas');
-  const ctx = canvas.getContext('2d');
-  const hero = document.querySelector('.hero');
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let w, h, dpr;
+(function () {
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var MAX = 6, stamps = 4;
 
-  function resize(){
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    w = hero.offsetWidth; h = hero.offsetHeight;
-    canvas.width = w * dpr; canvas.height = h * dpr;
-    canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
-    ctx.setTransform(dpr,0,0,dpr,0,0);
-  }
-  window.addEventListener('resize', resize);
-  resize();
-
-  const blobs = [
-    { cx:0.22, cy:0.3, r:0.42, color:'rgba(201,162,39,0.30)', sx:0.00011, sy:0.00017, phx:0, phy:1.4 },
-    { cx:0.78, cy:0.22, r:0.38, color:'rgba(232,200,116,0.22)', sx:0.00014, sy:0.0001, phx:2.1, phy:0.3 },
-    { cx:0.55, cy:0.75, r:0.46, color:'rgba(176,141,87,0.24)', sx:0.00009, sy:0.00013, phx:3.3, phy:2.6 },
-    { cx:0.12, cy:0.8, r:0.3, color:'rgba(244,231,196,0.12)', sx:0.00016, sy:0.00012, phx:1.1, phy:4.2 }
-  ];
-
-  function draw(t){
-    ctx.clearRect(0,0,w,h);
-    ctx.fillStyle = '#07080A';
-    ctx.fillRect(0,0,w,h);
-    ctx.globalCompositeOperation = 'screen';
-    blobs.forEach(b=>{
-      const x = (b.cx + Math.sin(t*b.sx + b.phx)*0.06) * w;
-      const y = (b.cy + Math.cos(t*b.sy + b.phy)*0.07) * h;
-      const r = b.r * Math.max(w,h);
-      const grad = ctx.createRadialGradient(x,y,0,x,y,r);
-      grad.addColorStop(0, b.color);
-      grad.addColorStop(1, 'rgba(0,0,0,0)');
-      ctx.fillStyle = grad;
-      ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2); ctx.fill();
-    });
-    ctx.globalCompositeOperation = 'source-over';
-  }
-
-  if (reduced){ draw(0); }
-  else {
-    function loop(t){ draw(t); requestAnimationFrame(loop); }
-    requestAnimationFrame(loop);
-  }
-})();
-
-/* ============ SCROLL REVEAL ============ */
-(function(){
-  const els = document.querySelectorAll('.reveal');
-  if (!('IntersectionObserver' in window)){ els.forEach(el=>el.classList.add('in-view')); return; }
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(entry=>{
-      if (entry.isIntersecting){ entry.target.classList.add('in-view'); io.unobserve(entry.target); }
-    });
-  }, { threshold:0.15, rootMargin:'0px 0px -40px 0px' });
-  els.forEach(el=>io.observe(el));
-})();
-
-/* ============ MAGNETIC BUTTONS ============ */
-(function(){
-  if (window.matchMedia('(pointer: coarse)').matches) return;
-  document.querySelectorAll('.magnetic').forEach(btn=>{
-    btn.addEventListener('mousemove', (e)=>{
-      const r = btn.getBoundingClientRect();
-      const x = e.clientX - r.left - r.width/2;
-      const y = e.clientY - r.top - r.height/2;
-      btn.style.transform = `translate(${x*0.18}px, ${y*0.35}px)`;
-    });
-    btn.addEventListener('mouseleave', ()=>{ btn.style.transform = ''; });
-  });
-})();
-
-/* ============ GOLD BIRD DEMO APP ============ */
-const BUSINESS = { name: "Gold Bird", maxStamps: 10, pointsPerStamp: 10 };
-const EXPERIENCES = [
-  { cat:'✈ Viaje', title:'Sala VIP Jorge Chávez', min:0, tier:'Bronce' },
-  { cat:'🍽 Gastronomía', title:'Cena en viñedo boutique', min:100, tier:'Plata' },
-  { cat:'⛰ Retiro', title:'Workation Retreat, Punta Sal', min:100, tier:'Plata' },
-  { cat:'✦ Hospedaje', title:'Casa Cielo, Hotel Boutique', min:300, tier:'Oro' },
-  { cat:'🍽 Gastronomía', title:'Mesa en experiencia Central', min:300, tier:'Oro' },
-  { cat:'✈ Viaje', title:'Upgrade a suite, alianza Cusco', min:300, tier:'Oro' },
-];
-function experienceTierFor(plumas){ return plumas >= 300 ? 'Oro' : plumas >= 100 ? 'Plata' : 'Bronce'; }
-
-let state = { role: 'merchant', myClientId: null, clients: [], activity: [], merchantFoundId: null, prevStamps: {}, usingMockData: false };
-
-function uid(){ return 'gb' + Math.random().toString(36).slice(2,8).toUpperCase(); }
-function code6(id){
-  let h = 0; for (let i=0;i<id.length;i++){ h = (h*31 + id.charCodeAt(i)) >>> 0; }
-  return (h % 900000 + 100000).toString();
-}
-function tierFor(cycles){ return cycles >= 3 ? 'Oro' : cycles >= 1 ? 'Plata' : 'Bronce'; }
-function fmtTime(ts){ const d = new Date(ts); return d.toLocaleTimeString('es-PE', {hour:'2-digit', minute:'2-digit'}); }
-
-function renderConciergeMini(plumas){
-  const cards = EXPERIENCES.map(e=>{
-    const unlocked = plumas >= e.min;
-    return `<div class="cx-card ${unlocked?'':'locked'}">
-      ${unlocked ? '' : '<svg class="cx-lock" viewBox="0 0 16 16"><rect x="3.5" y="7" width="9" height="6.5" rx="1"/><path d="M5.5 7V4.8a2.5 2.5 0 0 1 5 0V7"/></svg>'}
-      <div class="cx-cat">${e.cat}</div>
-      <div class="cx-title">${e.title}</div>
-      <div class="cx-req ${unlocked?'':'islocked'}">${unlocked ? 'Desbloqueada · '+e.tier : 'Requiere '+e.min+' plumas'}</div>
-    </div>`;
-  }).join('');
-  return `<div class="activity"><h3>Catálogo Concierge · nivel ${experienceTierFor(plumas)}</h3><div class="cx-grid">${cards}</div></div>`;
-}
-
-function injectMockData(){
-  if (state.clients.length === 0){
-    const m1 = { id:'GBAAAA', name:'Carlos Mendoza', email:'carlos@gmail.com', stamps:4, cyclesCompleted:0, plumas:40, createdAt:Date.now()-3600000 };
-    const m2 = { id:'GBBBBB', name:'Lucía Fernández', email:'lucia@hotmail.com', stamps:10, cyclesCompleted:1, plumas:110, createdAt:Date.now()-7200000 };
-    const m3 = { id:'GBCCCC', name:'Mauricio Ortiz', email:'mori@outlook.com', stamps:2, cyclesCompleted:3, plumas:320, createdAt:Date.now()-12000000 };
-    state.clients = [m1, m2, m3];
-    if (!state.myClientId) state.myClientId = m2.id;
-    state.activity = [
-      { type:'stamp', clientId:m1.id, name:m1.name, ts:Date.now()-1800000 },
-      { type:'redeem', clientId:m2.id, name:m2.name, ts:Date.now()-900000 },
-      { type:'stamp', clientId:m3.id, name:m3.name, ts:Date.now()-360000 }
-    ];
-    state.usingMockData = true;
-  } else {
-    state.usingMockData = false;
-  }
-}
-
-async function loadShared(){
-  try{ const c = await window.storage.get('goldbird:clients', true); state.clients = c ? JSON.parse(c.value) : []; }catch(e){ state.clients = []; }
-  try{ const a = await window.storage.get('goldbird:activity', true); state.activity = a ? JSON.parse(a.value) : []; }catch(e){ state.activity = []; }
-  injectMockData();
-}
-async function saveClients(){
-  if (state.usingMockData){ state.usingMockData = false; }
-  await window.storage.set('goldbird:clients', JSON.stringify(state.clients), true);
-}
-async function saveActivity(){ state.activity = state.activity.slice(-30); await window.storage.set('goldbird:activity', JSON.stringify(state.activity), true); }
-async function loadPersonal(){
-  try{ const r = await window.storage.get('goldbird:my_client_id', false); if (r && r.value) state.myClientId = r.value; }catch(e){}
-  try{ const r2 = await window.storage.get('goldbird:role', false); if (r2 && r2.value) state.role = r2.value; }catch(e){}
-}
-
-function showToast(msg){ const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); setTimeout(()=> t.classList.remove('show'), 2200); }
-
-function confettiBurst(big){
-  const canvas = document.createElement('canvas');
-  canvas.style.position = 'fixed'; canvas.style.top = 0; canvas.style.left = 0;
-  canvas.style.width = '100vw'; canvas.style.height = '100vh'; canvas.style.pointerEvents = 'none'; canvas.style.zIndex = 9999;
-  canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-  document.body.appendChild(canvas);
-  const ctx = canvas.getContext('2d');
-  const colors = ['#C9A227','#E8C874','#F4E7C4','#F2EFE6'];
-  const n = big ? 140 : 45;
-  const parts = Array.from({length:n}, () => ({
-    x: canvas.width/2 + (Math.random()-0.5)*(big?canvas.width*0.6:120),
-    y: big ? canvas.height*0.3 : canvas.height*0.35,
-    vx: (Math.random()-0.5)*8, vy: -Math.random()*8 - 3, r: Math.random()*4+2,
-    color: colors[Math.floor(Math.random()*colors.length)], rot: Math.random()*360, vr: (Math.random()-0.5)*10
-  }));
-  let frame = 0; const maxFrames = big ? 90 : 55;
-  function tick(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    parts.forEach(p=>{
-      p.vy += 0.22; p.x += p.vx; p.y += p.vy; p.rot += p.vr;
-      ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot*Math.PI/180);
-      ctx.fillStyle = p.color; ctx.fillRect(-p.r,-p.r*0.6,p.r*2,p.r*1.2); ctx.restore();
-    });
-    frame++;
-    if (frame < maxFrames) requestAnimationFrame(tick); else canvas.remove();
-  }
-  tick();
-}
-
-function qrSvg(id){
-  const size = 11;
-  let h = 0; for (let i=0;i<id.length;i++){ h = (h*131 + id.charCodeAt(i)) >>> 0; }
-  let bits = []; let seed = h;
-  for (let i=0;i<size*size;i++){ seed = (seed*1103515245 + 12345) >>> 0; bits.push((seed >> 16) % 2); }
-  const cell = 100/size; let rects = '';
-  for (let y=0;y<size;y++){
-    for (let x=0;x<size;x++){
-      const corner = (x<3&&y<3)||(x>size-4&&y<3)||(x<3&&y>size-4);
-      const on = corner ? true : bits[y*size+x];
-      if (on) rects += `<rect x="${x*cell}" y="${y*cell}" width="${cell}" height="${cell}" fill="#E8C874"/>`;
+  // Sellos de la tarjeta del hero
+  function fillStamps(el, n, glyph) {
+    el.innerHTML = "";
+    for (var i = 0; i < MAX; i++) {
+      var s = document.createElement("div");
+      s.className = "stamp" + (i < n ? " on" : "");
+      s.textContent = i < n ? glyph : "";
+      el.appendChild(s);
     }
   }
-  return `<svg viewBox="0 0 100 100">${rects}</svg>`;
-}
-
-async function setRole(r){ state.role = r; await window.storage.set('goldbird:role', r, false); render(); document.getElementById('demo').scrollIntoView({behavior:'smooth'}); }
-
-async function createClient(name, email){
-  if (!name.trim()) { showToast('Ingresa tu nombre'); return; }
-  const id = uid();
-  const client = { id, name: name.trim(), email: email.trim(), stamps: 0, cyclesCompleted: 0, plumas: 0, createdAt: Date.now() };
-  if (state.usingMockData){ state.clients = []; state.activity = []; state.usingMockData = false; }
-  state.clients.push(client); state.myClientId = id;
-  await saveClients(); await window.storage.set('goldbird:my_client_id', id, false);
-  render();
-}
-async function addStamp(id){
-  const c = state.clients.find(x=>x.id===id);
-  if (!c || c.stamps >= BUSINESS.maxStamps) return;
-  c.stamps += 1; c.plumas += BUSINESS.pointsPerStamp;
-  state.activity.push({ type:'stamp', clientId:id, name:c.name, ts: Date.now() });
-  await saveClients(); await saveActivity(); showToast(`Sello agregado a ${c.name}`); render();
-}
-async function redeem(id){
-  const c = state.clients.find(x=>x.id===id);
-  if (!c || c.stamps < BUSINESS.maxStamps) return;
-  c.stamps = 0; c.cyclesCompleted += 1;
-  state.activity.push({ type:'redeem', clientId:id, name:c.name, ts: Date.now() });
-  await saveClients(); await saveActivity(); showToast(`Premio entregado — ${c.name}`); render();
-}
-function findClient(query){
-  const q = query.trim().toLowerCase(); if (!q) return null;
-  return state.clients.find(c => c.id.toLowerCase()===q || code6(c.id)===q || c.name.toLowerCase().includes(q));
-}
-
-function renderStampRow(c, animateIndex){
-  let html = '<div class="stamprow">';
-  for (let i=0;i<BUSINESS.maxStamps;i++){
-    const filled = i < c.stamps; const pop = animateIndex === i ? ' pop' : '';
-    html += `<div class="stamp ${filled?'filled':''}${pop}">${filled ? '<svg viewBox="0 0 24 24" fill="none"><path d="M12 4c3.5 3.5 3.5 8 3.5 10-2 0-6.5 0-10-3.5 1-4.5 4.5-6.5 6.5-6.5z" fill="#1A1400"/></svg>' : ''}</div>`;
-  }
-  html += '</div>'; return html;
-}
-
-function renderClientView(){
-  const container = document.createElement('div');
-  const c = state.clients.find(x=>x.id===state.myClientId);
-  if (!c){
-    container.innerHTML = `
-      <div class="card glass-solid">
-        <h2>Crea tu tarjeta</h2>
-        <p class="sub">Es gratis. Empiezas a sumar plumas desde hoy.</p>
-        <label>Nombre</label>
-        <input type="text" id="onb-name" placeholder="Tu nombre completo">
-        <label>Correo</label>
-        <input type="email" id="onb-email" placeholder="nombre@correo.com">
-        <button class="btn btn-gold btn-full magnetic" style="margin-top:1.4rem" onclick="createClient(document.getElementById('onb-name').value, document.getElementById('onb-email').value)">Crear mi tarjeta</button>
-      </div>`;
-    return container;
-  }
-  const tier = tierFor(c.cyclesCompleted);
-  const full = c.stamps >= BUSINESS.maxStamps;
-  const prevStamps = state.prevStamps[c.id];
-  let animateIndex = -1;
-  if (prevStamps !== undefined && c.stamps > prevStamps) animateIndex = c.stamps - 1;
-  const myActivity = state.activity.filter(a => a.clientId === c.id).slice(-5).reverse();
-  container.innerHTML = `
-    <div class="pass">
-      <div class="pass-main">
-        <div class="eyebrow">Tarjeta de fidelización</div>
-        <div class="clientname">${c.name}</div>
-        <div class="tierrow"><span class="tierbadge tier-${tier}">${tier}</span><span class="plumas"><b>${c.plumas}</b> plumas de oro</span></div>
-        ${renderStampRow(c, animateIndex)}
-        <div class="progresstext">${c.stamps} de ${BUSINESS.maxStamps} sellos ${full ? '— ¡completa!' : 'para tu próximo premio'}</div>
-        ${full ? `<div class="rewardbanner">¡Premio listo! Muéstralo en caja.</div>` : ''}
-        ${c.plumas >= 100 && c.plumas < 300 ? `<div class="rewardbanner" style="border-color:var(--border-soft); background:rgba(201,162,39,0.06);">Nivel Plata — ya puedes reservar experiencias.</div>` : ''}
-        ${c.plumas >= 300 ? `<div class="rewardbanner" style="border-color:var(--border-soft); background:rgba(201,162,39,0.06);">Nivel Oro — catálogo completo desbloqueado.</div>` : ''}
-      </div>
-      <div class="perf"></div>
-      <div class="pass-stub">
-        <div class="qrbox">${qrSvg(c.id)}</div>
-        <div class="codetext">${code6(c.id)}</div>
-        <div class="codelabel">Muestra este código en caja</div>
-      </div>
-    </div>
-    <div class="activity">
-      <h3>Actividad reciente</h3>
-      ${myActivity.length ? myActivity.map(a => `<div class="arow"><span class="tag ${a.type==='redeem'?'tag-redeem':'tag-stamp'}">${a.type==='redeem' ? 'Canje' : '+1 sello'}</span><span class="when">${fmtTime(a.ts)}</span></div>`).join('') : '<div class="empty">Aún no tienes movimientos.</div>'}
-    </div>
-    ${renderConciergeMini(c.plumas)}`;
-  if (prevStamps !== undefined && c.stamps > prevStamps){
-    if (c.stamps >= BUSINESS.maxStamps) setTimeout(()=>confettiBurst(true), 80); else setTimeout(()=>confettiBurst(false), 80);
-  }
-  if (prevStamps !== undefined && prevStamps >= BUSINESS.maxStamps && c.stamps === 0){ setTimeout(()=>confettiBurst(true), 80); }
-  state.prevStamps[c.id] = c.stamps;
-  return container;
-}
-
-function renderMerchantView(){
-  const container = document.createElement('div');
-  const found = state.clients.find(x=>x.id===state.merchantFoundId);
-  const clientOptions = state.clients.map(c => `<option value="${c.id}" ${c.id===state.merchantFoundId?'selected':''}>${c.name} — ${code6(c.id)}</option>`).join('');
-  container.innerHTML = `
-    <div class="card glass-solid">
-      <h2>Panel del comercio</h2>
-      <p class="sub">Escanea o ingresa el código que te muestra tu cliente.</p>
-      <div class="scanrow">
-        <input type="text" id="scan-input" placeholder="Código de 6 dígitos o nombre">
-        <button class="btn btn-gold magnetic" onclick="doScan()">Buscar</button>
-      </div>
-      <label>Simular cámara (elegir cliente demo)</label>
-      <select id="scan-select" onchange="doScanSelect(this.value)">
-        <option value="">Elegir cliente registrado…</option>
-        ${clientOptions}
-      </select>
-      ${found ? `
-        <div class="foundcard">
-          <div class="foundtop">
-            <div><div class="foundname">${found.name}</div><div class="foundmeta">${found.stamps}/${BUSINESS.maxStamps} sellos · ${found.plumas} plumas · nivel ${tierFor(found.cyclesCompleted)}</div></div>
-            <span class="tierbadge tier-${tierFor(found.cyclesCompleted)}">${tierFor(found.cyclesCompleted)}</span>
-          </div>
-          ${renderStampRow(found, -1)}
-          <div class="actionrow">
-            <button class="btn btn-gold magnetic" onclick="addStamp('${found.id}')" ${found.stamps>=BUSINESS.maxStamps ? 'disabled' : ''}>+1 Sello</button>
-            <button class="btn btn-outline magnetic" onclick="redeem('${found.id}')" ${found.stamps<BUSINESS.maxStamps ? 'disabled' : ''}>Entregar premio</button>
-          </div>
-        </div>` : `<div class="empty" style="border:1px dashed var(--border); margin-top:1rem; border-radius:8px; padding:1.25rem;">Elige un cliente arriba para sumar un sello o entregar un premio.</div>`}
-    </div>
-    <div class="sectiontitle">Clientes registrados</div>
-    ${state.clients.length ? `
-      <table><tr><th>Cliente</th><th>Sellos</th><th>Plumas</th><th>Nivel</th></tr>
-        ${state.clients.map(c => `<tr><td>${c.name}</td><td class="num">${c.stamps}/${BUSINESS.maxStamps}</td><td class="num">${c.plumas}</td><td>${tierFor(c.cyclesCompleted)}</td></tr>`).join('')}
-      </table>` : '<div class="empty">Aún no hay clientes. Crea uno desde la vista Cliente.</div>'}
-    <div class="sectiontitle">Actividad del negocio</div>
-    <div class="activity" style="margin-top:0">
-      ${state.activity.length ? state.activity.slice(-10).reverse().map(a => `<div class="arow"><span class="who">${a.name}</span><span class="tag ${a.type==='redeem'?'tag-redeem':'tag-stamp'}">${a.type==='redeem' ? 'Canje' : '+1 sello'}</span><span class="when">${fmtTime(a.ts)}</span></div>`).join('') : '<div class="empty">Sin movimientos todavía.</div>'}
-    </div>
-    <div class="partner-cta">
-      <p><b style="color:var(--text)">¿Tu negocio es gastronómico, hotelero o de bienestar?</b> Súmate como aliado y aparece como premio para los clientes top de la red.</p>
-      <a href="#concierge" class="btn btn-outline magnetic">Ver cómo funciona</a>
-    </div>`;
-  return container;
-}
-
-function doScan(){ const val = document.getElementById('scan-input').value; const c = findClient(val); if (!c){ showToast('Cliente no encontrado'); return; } state.merchantFoundId = c.id; render(); }
-function doScanSelect(id){ if (!id) return; state.merchantFoundId = id; render(); }
-
-function render(){
-  document.getElementById('tab-client').classList.toggle('active', state.role==='client');
-  document.getElementById('tab-merchant').classList.toggle('active', state.role==='merchant');
-  const app = document.getElementById('app');
-  app.innerHTML = '';
-  app.appendChild(state.role === 'client' ? renderClientView() : renderMerchantView());
-  attachMagnetic();
-}
-
-function attachMagnetic(){
-  if (window.matchMedia('(pointer: coarse)').matches) return;
-  document.querySelectorAll('#app .magnetic').forEach(btn=>{
-    if (btn._magnetized) return;
-    btn._magnetized = true;
-    btn.addEventListener('mousemove', (e)=>{
-      const r = btn.getBoundingClientRect();
-      const x = e.clientX - r.left - r.width/2;
-      const y = e.clientY - r.top - r.height/2;
-      btn.style.transform = `translate(${x*0.14}px, ${y*0.28}px)`;
-    });
-    btn.addEventListener('mouseleave', ()=>{ btn.style.transform = ''; });
+  var heroStamps = $("#heroStamps");
+  fillStamps(heroStamps, 0, "✳");
+  [].forEach.call(heroStamps.children, function (s, i) {
+    if (i < 4) setTimeout(function () { s.classList.add("on", "pop"); s.textContent = "✳"; }, 700 + i * 220);
   });
-}
 
-async function init(){
-  document.getElementById('hero-qr').innerHTML = qrSvg('preview');
-  await loadPersonal(); await loadShared(); render();
-  setInterval(async ()=>{ await loadShared(); render(); }, 2500);
-}
-init();
+  // Cinta de texto
+  var words = ["Sella", "Suma", "Vuelve", "Descubre"], t = "";
+  for (var r = 0; r < 8; r++) words.forEach(function (w) { t += "<span>" + w + " <b>✳</b></span>"; });
+  $("#ticker").innerHTML = t;
+
+  // Experiencias (cinta infinita)
+  var xp = [
+    { c: "Viajes", t: "Bronce", cls: "a-viaje", g: "✈", n: "Sala VIP Jorge Chávez", l: "Lima, Perú", d: "Acceso ilimitado antes de cualquier vuelo." },
+    { c: "Gastronomía", t: "Plata", cls: "a-gastro", g: "◒", n: "Cena en viñedo boutique", l: "Ica, Perú", d: "Mesa reservada + cata privada." },
+    { c: "Escapadas", t: "Plata", cls: "a-escapada", g: "⌁", n: "Workation Retreat", l: "Punta Sal, Perú", d: "3 noches + coworking frente al mar." },
+    { c: "Hospedaje", t: "Oro", cls: "a-hospedaje", g: "⌂", n: "Casa Cielo Boutique", l: "Cusco, Perú", d: "20% de descuento y acceso prioritario." }
+  ];
+  function cardHTML(x, i) {
+    return '<article class="xcard"><div class="xart ' + x.cls + '"><span aria-hidden="true">' + x.g + '</span></div><div class="xbody"><div class="xmeta"><span>' + x.c + '</span><b class="t-' + x.t.toLowerCase() + '">' + x.t + '</b></div><h3>' + x.n + '</h3><div class="loc">' + x.l + '</div><p class="desc">' + x.d + '</p></div></article>';
+  }
+  var group = "";
+  for (var k = 0; k < 2; k++) xp.forEach(function (x) { group += cardHTML(x); });
+  var track = $("#xTrack");
+  track.innerHTML = '<div class="marquee-group">' + group + '</div><div class="marquee-group" aria-hidden="true">' + group + '</div>';
+
+  // Navegación: compacta al hacer scroll
+  var nav = $("#nav");
+  function onScroll() { nav.classList.toggle("is-scrolled", window.scrollY > 40); }
+  window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
+
+  // Tarjeta 3D y brillo con el puntero
+  var stage = $("#stage"), tilt = $("#tilt"), card = $("#heroCard"), hero = $(".hero");
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!reduce) {
+    stage.addEventListener("pointermove", function (e) {
+      var b = stage.getBoundingClientRect();
+      var x = (e.clientX - b.left) / b.width - .5, y = (e.clientY - b.top) / b.height - .5;
+      tilt.style.setProperty("--ry", (x * 18).toFixed(1) + "deg");
+      tilt.style.setProperty("--rx", (-y * 14).toFixed(1) + "deg");
+      card.style.setProperty("--shine", (x * 120).toFixed(0) + "%");
+      hero.style.setProperty("--px", (x * 30) + "px"); hero.style.setProperty("--py", (y * 30) + "px");
+    });
+    stage.addEventListener("pointerleave", function () {
+      tilt.style.removeProperty("--ry"); tilt.style.removeProperty("--rx"); card.style.setProperty("--shine", "-60%");
+    });
+  }
+
+  // Pestañas (clientes / comercios)
+  function tabs(btnA, btnB, onChange) {
+    function set(a) {
+      btnA.setAttribute("aria-selected", a); btnB.setAttribute("aria-selected", !a);
+      btnA.tabIndex = a ? 0 : -1; btnB.tabIndex = a ? -1 : 0;
+      onChange(a);
+    }
+    btnA.addEventListener("click", function () { set(true); });
+    btnB.addEventListener("click", function () { set(false); });
+    [btnA, btnB].forEach(function (b) {
+      b.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowRight" || e.key === "ArrowLeft") { var a = b === btnB; set(a); (a ? btnA : btnB).focus(); }
+      });
+    });
+    return set;
+  }
+  tabs($("#t-cli"), $("#t-com"), function (a) { $("#p-cli").hidden = !a; $("#p-com").hidden = a; });
+
+  // QR de muestra
+  (function () {
+    var q = $("#qr"), n = 15, seed = 7, html = "";
+    function rnd() { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
+    function finder(x, y) {
+      var fx = x < 7 ? x : x - (n - 7), fy = y < 7 ? y : y - (n - 7);
+      if ((x < 7 || x >= n - 7) && (y < 7 || y < 7 && false)) {}
+      return null;
+    }
+    for (var y = 0; y < n; y++) for (var x = 0; x < n; x++) {
+      var inF = (x < 7 && y < 7) || (x >= n - 7 && y < 7) || (x < 7 && y >= n - 7), on;
+      if (inF) {
+        var lx = x % (n - 7 < 8 ? 8 : 8), ly = y;
+        var ax = x < 7 ? x : x - (n - 7), ay = y < 7 ? y : y - (n - 7);
+        on = ax === 0 || ax === 6 || ay === 0 || ay === 6 || (ax >= 2 && ax <= 4 && ay >= 2 && ay <= 4);
+      } else on = rnd() > .52;
+      html += '<i class="' + (on ? "k" : "") + '"></i>';
+    }
+    q.innerHTML = html;
+  })();
+
+  // Demo interactiva
+  var audioCtx;
+  function chime() {
+    try {
+      audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+      [660, 880, 1320].forEach(function (f, i) {
+        var o = audioCtx.createOscillator(), g = audioCtx.createGain(), t0 = audioCtx.currentTime + i * .09;
+        o.type = "sine"; o.frequency.value = f; g.gain.setValueAtTime(.0001, t0);
+        g.gain.exponentialRampToValueAtTime(.12, t0 + .02); g.gain.exponentialRampToValueAtTime(.0001, t0 + .5);
+        o.connect(g); g.connect(audioCtx.destination); o.start(t0); o.stop(t0 + .55);
+      });
+    } catch (e) {}
+  }
+  function confetti() {
+    var c = document.createElement("div"); c.className = "confetti"; document.body.appendChild(c);
+    var cols = ["#E8B63A", "#F4F1E8", "#B8743A", "#9AA1AB"];
+    for (var i = 0; i < 60; i++) {
+      var p = document.createElement("i");
+      p.style.left = (35 + Math.random() * 30) + "%"; p.style.top = "30%";
+      p.style.background = cols[i % cols.length];
+      p.style.setProperty("--dx", (Math.random() * 600 - 300) + "px");
+      p.style.setProperty("--rot", (Math.random() * 720) + "deg");
+      p.style.animationDelay = (Math.random() * .15) + "s";
+      c.appendChild(p);
+    }
+    setTimeout(function () { c.remove(); }, 2200);
+  }
+  var visits = ["Hoy · Café de la casa", "Hace 6 días · Café de la casa", "Hace 2 semanas · Café de la casa", "Hace 1 mes · Café de la casa"];
+  function render(last) {
+    var ds = $("#demoStamps"); fillStamps(ds, stamps, "✳");
+    if (last) ds.children[stamps - 1].classList.add("pop");
+    $("#bar").style.width = (stamps / MAX * 100) + "%";
+    $("#count").textContent = stamps + " de " + MAX + " visitas";
+    var done = stamps >= MAX;
+    $("#left").textContent = done ? "Completa" : "Te faltan " + (MAX - stamps);
+    $("#reward").classList.toggle("on", done);
+    $("#clientTitle").innerHTML = done ? "Tu premio<br>te espera." : (MAX - stamps === 1 ? "Una visita<br>más cerca." : "Sigue<br>sumando.");
+    $("#scanBtn").disabled = done; $("#scanBtn").style.opacity = done ? .45 : 1;
+    $("#scanBtn").textContent = done ? "Tarjeta completa" : "Escanear QR de Camila";
+    var list = $("#visits"); list.innerHTML = "";
+    var shown = visits.slice(0, 3);
+    if (stamps > 4) shown.unshift("Ahora · Visita " + stamps);
+    shown.slice(0, 3).forEach(function (v) { var li = document.createElement("li"); li.textContent = v; list.appendChild(li); });
+  }
+  var viewCli = $("#v-cli"), viewCom = $("#v-com"), hint = $("#hint");
+  var setView = tabs($("#d-cli"), $("#d-com"), function (isCli) {
+    viewCli.classList.toggle("on", isCli); viewCom.classList.toggle("on", !isCli);
+    $("#appHeadRight").textContent = isCli ? "HOLA, CAMILA ✳" : "MODO COMERCIO";
+    hint.textContent = isCli
+      ? (stamps >= MAX ? "Camila completó su tarjeta y desbloqueó un café de la casa." : "Esta es la tarjeta de Camila. Pasa a «Soy comercio» y escanea su QR para sumarle una visita.")
+      : "Así ve tu negocio el escaneo. Toca el botón para registrar la visita y vuelve a «Soy cliente» para ver el sello.";
+  });
+  $("#scanBtn").addEventListener("click", function () {
+    if (stamps >= MAX) return;
+    stamps++; chime();
+    var sc = $("#scanner"); sc.classList.remove("hit"); void sc.offsetWidth; sc.classList.add("hit");
+    render(true);
+    if (stamps >= MAX) { confetti(); }
+    setTimeout(function () { setView(true); $("#d-cli").focus({ preventScroll: true }); }, 650);
+  });
+  $("#reset").addEventListener("click", function () { stamps = 4; render(false); setView(true); });
+  render(false);
+
+  // Copiar correo
+  $("#copyMail").addEventListener("click", function () {
+    var b = this, txt = $("#mailText").textContent;
+    function ok() { b.textContent = "Copiado"; setTimeout(function () { b.textContent = "Copiar"; }, 1600); }
+    function fallback() {
+      var r = document.createRange(); r.selectNodeContents($("#mailText"));
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      b.textContent = "Seleccionado"; setTimeout(function () { b.textContent = "Copiar"; }, 1600);
+    }
+    try { navigator.clipboard.writeText(txt).then(ok, fallback); } catch (e) { fallback(); }
+  });
+})();
 </script>
-</body>
-</html>
+
+</body></html>
