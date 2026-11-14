@@ -1,0 +1,27 @@
+{
+  "name": "@expandemoney/reports-service",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Microservicio de Analítica Financiera, Cohortes de Fidelización y Exportación de Reportes",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@expandemoney/shared-types": "workspace:*",
+    "@expandemoney/supabase-client": "workspace:*",
+    "cors": "^2.8.5",
+    "csv-stringify": "^6.5.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.12.12",
+    "tsx": "^4.11.0",
+    "typescript": "^5.4.5"
+  }
+}
