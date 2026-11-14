@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Fondo Grafito / Jet Black con profundidad -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#18181B" />
+      <stop offset="100%" stop-color="#09090B" />
+    </linearGradient>
+
+    <!-- Oro Metálico Luz -->
+    <linearGradient id="gbGoldLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF7D6" />
+      <stop offset="25%" stop-color="#FDE68A" />
+      <stop offset="60%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+
+    <!-- Oro Metálico Sombra -->
+    <linearGradient id="gbGoldDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FBBF24" />
+      <stop offset="50%" stop-color="#D97706" />
+      <stop offset="85%" stop-color="#B45309" />
+      <stop offset="100%" stop-color="#78350F" />
+    </linearGradient>
+
+    <!-- Cobre Metálico Luz -->
+    <linearGradient id="gbCopperLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDBA74" />
+      <stop offset="35%" stop-color="#FB923C" />
+      <stop offset="70%" stop-color="#EA580C" />
+      <stop offset="100%" stop-color="#C2410C" />
+    </linearGradient>
+
+    <!-- Cobre Metálico Sombra -->
+    <linearGradient id="gbCopperDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EA580C" />
+      <stop offset="50%" stop-color="#C2410C" />
+      <stop offset="85%" stop-color="#9A3412" />
+      <stop offset="100%" stop-color="#7C2D12" />
+    </linearGradient>
+
+    <filter id="softGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Contenedor Redondeado Premium -->
+  <rect width="512" height="512" rx="124" fill="url(#bgGrad)" />
+  <rect width="504" height="504" x="4" y="4" rx="120" fill="none" stroke="#F59E0B" stroke-width="2.5" stroke-opacity="0.3" />
+
+  <!-- Ave Dorada y Cobriza Facetada 3D -->
+  <g transform="translate(45, 60) scale(0.85)" filter="url(#softGlow)">
+    <!-- Cola -->
+    <path d="M 125 390 C 130 365 175 320 255 290 C 210 325 155 375 125 390 Z" fill="url(#gbCopperDark)" />
+    <path d="M 140 375 C 165 345 205 315 255 290 C 235 305 190 335 140 375 Z" fill="url(#gbCopperLight)" opacity="0.85" />
+    <path d="M 145 350 C 205 300 270 255 330 220 C 275 270 195 320 145 350 Z" fill="url(#gbCopperDark)" />
+    <path d="M 145 350 C 185 315 250 270 330 220 C 285 255 220 295 145 350 Z" fill="url(#gbCopperLight)" />
+
+    <!-- 3 Plumas Curvas Cobre -->
+    <path d="M 175 200 C 230 215 275 220 310 230 C 265 210 215 195 175 200 Z" fill="url(#gbCopperDark)" />
+    <path d="M 175 200 C 220 210 260 215 295 215 C 255 200 215 195 175 200 Z" fill="url(#gbCopperLight)" />
+
+    <path d="M 145 150 C 205 175 265 185 320 180 C 265 165 205 150 145 150 Z" fill="url(#gbCopperDark)" />
+    <path d="M 145 150 C 195 170 250 178 300 170 C 250 155 200 148 145 150 Z" fill="url(#gbCopperLight)" />
+
+    <path d="M 130 100 C 180 135 240 155 315 145 C 255 125 195 105 130 100 Z" fill="url(#gbCopperDark)" />
+    <path d="M 130 100 C 175 128 230 145 295 138 C 240 120 185 102 130 100 Z" fill="url(#gbCopperLight)" />
+
+    <!-- Ala Superior Dorada Facetada -->
+    <path d="M 130 40 C 160 105 215 155 330 145 C 245 110 185 65 130 40 Z" fill="url(#gbGoldDark)" />
+    <path d="M 130 40 C 170 85 245 130 330 145 C 375 140 400 155 410 165 C 340 125 240 90 130 40 Z" fill="url(#gbGoldLight)" />
+
+    <!-- Cuerpo, Pecho y Cabeza Oro -->
+    <path d="M 330 145 C 355 185 340 230 260 275 C 320 240 365 200 375 160 Z" fill="url(#gbGoldDark)" />
+    <path d="M 330 145 C 360 135 385 135 415 145 C 385 185 340 235 260 275 C 300 255 350 205 330 145 Z" fill="url(#gbGoldLight)" />
+    <path d="M 335 145 C 365 130 395 130 430 150 C 445 155 460 162 470 165 C 450 175 435 185 415 185 C 390 180 360 165 335 145 Z" fill="url(#gbGoldLight)" />
+    <path d="M 415 185 C 435 185 450 175 470 165 C 455 178 440 190 415 192 C 380 195 355 175 335 145 Z" fill="url(#gbGoldDark)" opacity="0.95" />
+    <circle cx="395" cy="148" r="6" fill="#FFFFFF" opacity="0.85" />
+  </g>
+</svg>
